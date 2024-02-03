@@ -75,17 +75,17 @@ export default function Upload() {
   return (
     <div>
     <div
-      className={`text-center mt-8 border-4 border-blue-500 rounded p-8 bg-cover bg-center relative h-screen w-screen ${
+      className={`text-center mt-8 border-4 border-primary-500 rounded p-8 bg-cover bg-center relative h-screen w-screen ${
         image ? 'lg:flex-row' : 'lg:flex-col'
       }`}
       style={{ backgroundImage: "url('client/src/assets/backgorund.jpeg')" }}
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-      <h2 className="text-2xl font-bold mb-4">Image Uploader</h2>
+      <h2 className="text-2xl text-lime-100 font-bold mb-4">Image Uploader</h2>
       <label
         htmlFor="imageInput"
-        className="cursor-pointer inline-block px-4 py-2 border-2 border-blue-500 rounded"
+        className="cursor-pointer inline-block px-4 py-2 border-2 border-primary-100 rounded"
       >
         Select Image
       </label>
@@ -100,7 +100,7 @@ export default function Upload() {
       <button
         onClick={handleCaptureClick}
         disabled={isCapturing}
-        className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+        className="bg-primary-600 text-white px-4 py-2 rounded mt-4"
       >
         Capture Image from Camera
       </button>

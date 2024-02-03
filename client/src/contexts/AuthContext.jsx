@@ -1,4 +1,5 @@
 import { useContext, createContext, useEffect, useState } from "react";
+import { getFirestore, doc, setDoc } from 'firebase/firestore'
 import {
     GoogleAuthProvider,
     signInWithPopup,
@@ -13,10 +14,22 @@ const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState({});
 
-    const googleSignIn = () => {
+    const googleSignIn = async() => {
         const provider = new GoogleAuthProvider();
-        signInWithRedirect(auth, provider)
-    }
+        try {
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+            const firestore = getFirestore();
+            const userDoc = doc(firestore, 'users', user.uid);
+            await setDoc(userDoc, {
+                name: user.displayName,
+                email: user.email,
+                profile_picture: user.photoURL,
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const logOut = () => {
         signOut(auth);
