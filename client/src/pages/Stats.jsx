@@ -7,7 +7,7 @@ const Stats = () => {
  return (
     // <div className="bg-gray-100 min-h-screen p-4">
       // <Navbar /> 
-      <div className="max-w-4xl pt-20">
+      <div className="max-w-4xl pl-2 pt-20">
         <h2 className="text-2xl font-semibold text-gray-800 mb-6">User Statistics</h2>
         <div className="mb-6">
           <Heatmap />
