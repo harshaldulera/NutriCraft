@@ -1,51 +1,109 @@
-import React, { useState } from 'react';
+import { Global } from '@emotion/react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import Skeleton from '@mui/material/Skeleton';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Typography from '@mui/material/Typography';
+import { grey } from '@mui/material/colors';
+import { styled } from '@mui/material/styles';
+import PropTypes from 'prop-types';
+import * as React from 'react';
 
-const DrawerComponent = () => {
-  const [isDrawerOpen, setDrawerOpen] = useState(false);
+const drawerBleeding = 56;
 
-  const toggleDrawer = () => {
-    setDrawerOpen(!isDrawerOpen);
+const Root = styled('div')(({ theme }) => ({
+  height: '100%',
+  backgroundColor:
+    theme.palette.mode === 'light' ? grey[100] : theme.palette.background.default,
+}));
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'light' ? '#fff' : grey[800],
+}));
+
+const Puller = styled(Box)(({ theme }) => ({
+  width: 30,
+  height: 6,
+  backgroundColor: theme.palette.mode === 'light' ? grey[300] : grey[900],
+  borderRadius: 3,
+  position: 'absolute',
+  top: 8,
+  left: 'calc(50% - 15px)',
+}));
+
+function SwipeableEdgeDrawer(props) {
+  const { window } = props;
+  const [open, setOpen] = React.useState(false);
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
   };
 
-  return (
-    <div className="h-screen p-10">
-      {/* Button to toggle the drawer */}
-      <div className="text-center p-10">
-        <button
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          type="button"
-          onClick={toggleDrawer}
-        >
-          Show swipeable drawer
-        </button>
-      </div>
+  // This is used only for the example
+  const container = window !== undefined ? () => window().document.body : undefined;
 
-      {/* Drawer component */}
-      {isDrawerOpen && (
-        <div className="fixed z-40 w-full h-full overflow-y-auto bg-white border-t border-gray-200 rounded-t-lg dark:border-gray-700 dark:bg-gray-800 transition-transform bottom-0 left-0 right-0 translate-y-0 bottom-[60px]">
-          <div className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
-            <span className="absolute w-8 h-1 -translate-x-1/2 bg-gray-300 rounded-lg top-3 left-1/2 dark:bg-gray-600"></span>
-            <h5 className="inline-flex items-center text-base text-gray-500 dark:text-gray-400 font-medium">
-              <svg
-                className="w-4 h-4 me-2"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 18 18"
-              >
-                <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10ZM17 13h-2v-2a1 1 0 0 0-2 0v2h-2a1 1 0 0 0 0 2h2v2a1 1 0 0 0 2 0v-2h2a1 1 0 0 0 0-2Z" />
-              </svg>
-              Add widget
-            </h5>
-          </div>
-          {/* Rest of the drawer content */}
-          <div className="grid grid-cols-3 gap-4 p-4 lg:grid-cols-4">
-            {/* ... (rest of the HTML code) */}
-          </div>
-        </div>
-      )}
-    </div>
+  return (
+    <Root>
+      <CssBaseline />
+      <Global
+        styles={{
+          '.MuiDrawer-root > .MuiPaper-root': {
+            height: `calc(50% - ${drawerBleeding}px)`,
+            overflow: 'visible',
+          },
+        }}
+      />
+      <Box sx={{ textAlign: 'center', pt: 1, paddingTop: 15}}>
+        <Button onClick={toggleDrawer(true)}>Open</Button>
+      </Box>
+      <SwipeableDrawer
+        container={container}
+        anchor="bottom"
+        open={open}
+        onClose={toggleDrawer(false)}
+        onOpen={toggleDrawer(true)}
+        swipeAreaWidth={drawerBleeding}
+        disableSwipeToOpen={false}
+        ModalProps={{
+          keepMounted: true,
+        }}
+      >
+        <StyledBox
+          sx={{
+            position: 'absolute',
+            top: -drawerBleeding,
+            borderTopLeftRadius: 8,
+            borderTopRightRadius: 8,
+            visibility: 'visible',
+            right: 0,
+            left: 0,
+          }}
+        >
+          <Puller />
+          <Typography sx={{ p: 2, color: 'text.secondary' }}>51 results</Typography>
+        </StyledBox>
+        <StyledBox
+          sx={{
+            px: 2,
+            pb: 2,
+            height: '100%',
+            overflow: 'auto',
+          }}
+        >
+          <Skeleton variant="rectangular" height="100%" /> <button sx={{ p: 2, color: 'text.secondary' }}>eat</button>
+        </StyledBox>
+      </SwipeableDrawer>
+    </Root>
   );
+}
+
+SwipeableEdgeDrawer.propTypes = {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  window: PropTypes.func,
 };
 
-export default DrawerComponent;
+export default SwipeableEdgeDrawer;
