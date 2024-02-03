@@ -6,12 +6,13 @@ import Signup from "./pages/Auth/Signup";
 import Parameters  from "./components/Parameters";
 import CopyUpload from "./components/CopyUpload";
 import Recipe from "./components/Recipe";
-import Meal from "./pages/Meal";
-
+import Meal from "./pages/Meal";import Heatmap from "./components/Heatmap";
 import Ingredients from "./pages/Ingredients";
 
 import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
+import Stats from "./pages/Stats";
+
 export const Router = () => {
     return (
         <>

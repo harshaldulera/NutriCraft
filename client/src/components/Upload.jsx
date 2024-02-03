@@ -173,7 +173,7 @@ export default function Upload(props) {
           TRY US!!
         </h1>
       </div> */}
-      <div className="text-center flex flex-col items-center h-screen  w-screen p">
+      <div className="text-center mt-5 flex flex-col items-center h-screen  w-screen p">
       <form
         className={`${
           dragActive ? "bg-blue-400" : "bg-blue-100"
