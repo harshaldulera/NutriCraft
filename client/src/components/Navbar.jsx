@@ -14,8 +14,8 @@ const Navbar = () => {
       const userDoc = doc(firestore, "users", user.uid);
       const docSnap = await getDoc(userDoc);
       if (docSnap.exists()) {
-        const userData = docSnap.data();
-        console.log(userData);
+        // const userData = docSnap.data();
+        // console.log(userData);
         setUserProfile(docSnap.data()); // Update state with user data
       } else {
         console.log("No such documents.");
