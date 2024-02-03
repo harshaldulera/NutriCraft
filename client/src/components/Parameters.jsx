@@ -76,11 +76,7 @@ export default function DiscreteSlider(props) {
     <div>
       <div className="bg-secondary-50 max-w-6xl mx-auto rounded-xl flex flex-col items-center justify-center content-center shadow-md my-8 h-screen">
         <h1 className="text-2xl font-bold mb-4">How much time do you have?</h1>
-        <div className="w-80 ml-2 order-2 text-right flex flex-end">
-          <TimerIcon></TimerIcon>
-          <Typography variant="body1"> {value} mins</Typography>
-        </div>
-        <div className="w-80  ">
+        <div className="w-80 flex justify-end">
           <Slider
             aria-label="Temperature"
             value={value}
@@ -91,6 +87,10 @@ export default function DiscreteSlider(props) {
             min={5}
             max={120}
           />
+          <div className="flex flex-row">
+          <TimerIcon className="ml-5"></TimerIcon>
+          <Typography variant="body1"> {value} mins</Typography>
+          </div>
         </div>
         <div className="number-of-ppl">
           <h1 className="text-2xl font-bold mb-5">
