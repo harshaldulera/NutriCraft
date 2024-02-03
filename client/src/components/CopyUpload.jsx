@@ -97,7 +97,7 @@ export default function CopyUpload() {
        }
    
        const ings = await response.text();
-       console.log(ingredients)
+       console.log(ings)
        if(ings == " ERROR")
        {
         alert('Failed to generate ingredients. Please upload another image.');
@@ -107,7 +107,7 @@ export default function CopyUpload() {
         setIngredients(ings)
        }
        // Move to next screen bro
-       alert(`Ingredients: ${ingredients}`);
+       alert(`Ingredients: ${ings}`);
     } catch (error) {
        console.error('Error:', error);
        alert('Failed to generate ingredients. Please upload another image.');

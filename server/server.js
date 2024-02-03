@@ -77,12 +77,12 @@ const generateInfo = async () => {
   }
 };
 
-async function run() {
-  const dietRestrictions = 'vegetarian'
-  const ingredients = await generateIngredients()
-  const cooking_time = '30'
-  const people = '3'
-  const difficulty = 'easy'
+async function generateRecipe(dietRestrictions, ingredients, cooking_time, people, difficulty) {
+  // const dietRestrictions = 'vegetarian'
+  // const ingredients = await generateIngredients()
+  // const cooking_time = '30'
+  // const people = '3'
+  // const difficulty = 'easy'
 
   const prompt = `You are an expert culinary chef who has cooked for the best restaurants in the world.
   Craft a delightful, creative and unique recipe with the following considerations:
@@ -142,4 +142,4 @@ async function run() {
   console.log(text);
 }
 
-run();
+generateRecipe();
