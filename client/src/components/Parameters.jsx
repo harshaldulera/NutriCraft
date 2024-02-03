@@ -163,6 +163,13 @@ export default function DiscreteSlider() {
             label="isVeg ? 'Veg' : 'Non Veg'"
           ></Switch>
         </div>
+        
+
+
+
+
+
+        
       </div>
     </div>
   );

@@ -37,6 +37,8 @@ body{
     margin-bottom: 1.5rem; 
     object-fit: cover; 
     border-radius: 10%; 
+    margin: auto;
+    margin-bottom: 5%;
 }
   
   .box h2 {
@@ -70,6 +72,6 @@ body{
   
   @media screen and (max-width: 36rem) {
     .box {
-      width: 100%; /* Make boxes full width on even smaller screens using rem units */
+      width: 70%; /* Make boxes full width on even smaller screens using rem units */
     }
   }

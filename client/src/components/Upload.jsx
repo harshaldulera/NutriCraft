@@ -116,11 +116,11 @@ export default function Upload() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center h-screen ">
       <form
         className={`${
           dragActive ? "bg-blue-400" : "bg-blue-100"
-        }  p-4 w-1/3 rounded-lg  min-h-[10rem] text-center flex flex-col items-center justify-center`}
+        } bg-secondary-50 p-4 w-1/2 rounded-lg uploadImg h-screen/2 text-center flex flex-col items-center justify-center`}
         onDragEnter={handleDragEnter}
         onSubmit={(e) => e.preventDefault()}
         onDrop={handleDrop}
@@ -191,7 +191,7 @@ export default function Upload() {
         <canvas ref={canvasRef} className="hidden"></canvas>
       )}
       {image && (
-        <div className="lg:flex flex-col lg:justify-between">
+        <div className="lg:flex flex-col lg:justify-center items-center">
           <div className="lg:w-1/2">
             <img
               src={image}

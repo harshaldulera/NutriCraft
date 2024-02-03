@@ -186,6 +186,20 @@ async function generateRecipe(dietRestrictions, ingredients, cooking_time, peopl
     }
   };
 
+  app.post('/generate-info', async (req, res) => {
+    try {
+       const b64 = req.body.b64.split(',')[1];
+   
+       // console.log("TEST:\n\n\n\n\n\n\n\n\n" + b64)
+       const ingredients = await generateInfo(b64);
+       // console.log(ingredients)
+       res.status(200).send(ingredients);
+    } catch (error) {
+       console.error('Error recognising food:', error);
+       res.status(500).send('An error occurred while generating the food');
+    }
+   });
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
  console.log(`Server listening on port ${port}`);
