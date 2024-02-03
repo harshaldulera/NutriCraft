@@ -1,20 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./Router";
 import Upload from './components/Upload'
-import './App.css'
-
-function App() {
-
+const App = () => {
   return (
     <>
-      <div>
-        <Upload/>
-      </div>
-
-      
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     </>
   )
 }
 
-export default App
+export default App;
