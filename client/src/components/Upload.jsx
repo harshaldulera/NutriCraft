@@ -119,12 +119,23 @@ export default function Upload() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-space r h-screen ">
-    <Navbar/>
+    <div className="flex flex-col items-center justify-space  h-screen ">
+      <div className="flex flex-col items-center justify-space h-screen/2 ">
+      <Navbar/>
+      </div>
+      {/* <div className="words text-lg">
+        <h1>
+          HAVE INGREDIENTS AND DON'T KNOW WHAT TO EAT?
+        </h1>
+        <h1>
+          TRY US!!
+        </h1>
+      </div> */}
+      <div className="text-center flex flex-col items-center justify-center h-screen  w-screen p">
       <form
         className={`${
           dragActive ? "bg-blue-400" : "bg-blue-100"
-        } bg-secondary-50 p-4  w-1/2 rounded-lg uploadImg h-screen/2 text-center flex flex-col items-center justify-center`}
+        } bg-primary-100 p-7 h-100 w-3/5 rounded-lg uploadImg  text-center flex flex-col items-center justify-center`}
         onDragEnter={handleDragEnter}
         onSubmit={(e) => e.preventDefault()}
         onDrop={handleDrop}
@@ -165,13 +176,13 @@ export default function Upload() {
             </div>
           ))}
         </div>
-        <button
+        {!isCapturing && <button
         onClick={handleCaptureClick}
         disabled={isCapturing}
         className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
       >
-        Capture Image from Camera
-      </button>
+        Capture Image 
+      </button>}
       <br />
       {isCapturing && (
         <>
@@ -206,7 +217,9 @@ export default function Upload() {
           <div className="lg:w-1/2">
             
             <button
-              className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+              id="capture"
+              className="text-white px-4 py-2 rounded mt-4"
+            
               onClick={() => {handleUploadClick()}}
             >
               Upload
@@ -215,6 +228,7 @@ export default function Upload() {
         </div>
       )}
       </form>
+      </div>
     </div>
   );
 }

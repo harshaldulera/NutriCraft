@@ -13,6 +13,7 @@ const GoogleLoginButton = () => {
         } catch(error) {
             console.log(error);
         }
+        navigate('/')
     };
 
     useEffect(() => {
