@@ -78,7 +78,7 @@ export default function Upload() {
       className={`text-center mt-8 border-4 border-blue-500 rounded p-8 bg-cover bg-center relative h-screen w-screen ${
         image ? 'lg:flex-row' : 'lg:flex-col'
       }`}
-      style={{ backgroundImage: "url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fgreen-food-background&psig=AOvVaw1Oh1cZun0Ky8qDKLO9snlJ&ust=1707035832604000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNCJgZXijoQDFQAAAAAdAAAAABAE')" }}
+      style={{ backgroundImage: "url('client/src/assets/backgorund.jpeg')" }}
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
