@@ -163,13 +163,14 @@ export default function DiscreteSlider() {
             label="isVeg ? 'Veg' : 'Non Veg'"
           ></Switch>
         </div>
-        
-
-
-
-
-
-        
+        <div>
+        <button
+                className="bg-primary-300 mt-4 px-4 py-4 rounded-md text-center w-full"
+                // onClick={}
+              >
+                Generate recipe
+              </button>
+        </div>
       </div>
     </div>
   );
