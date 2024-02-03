@@ -39,9 +39,8 @@ export default function DiscreteSlider() {
     setIsVeg(!isVeg);
   };
   return (
-    <div className="bg-secondary-50 max-w-6xl mx-auto rounded-xl shadow-md my-8 h-full">
-      <div className="flex flex-col items-center justify-center content-center">
-        <h1 className="text-2xl font-bold mb-4">HOW MUCH TIME DO YOU HAVE?</h1>
+      <div className="bg-secondary-50 max-w-6xl mx-auto rounded-xl flex flex-col items-center justify-center content-center shadow-md my-8 h-screen">
+        <h1 className="text-2xl font-bold mb-4">How much time do you have?</h1>
         <div className="w-80 ml-2 order-2 text-right flex flex-end">
           <TimerIcon></TimerIcon>
           <Typography variant="body1"> {value} mins</Typography>
@@ -60,7 +59,7 @@ export default function DiscreteSlider() {
         </div>
         <div className="number-of-ppl">
           <h1 className="text-2xl font-bold mb-4">
-            HOW MANY PEOPLE DO YOU HAVE TO SERVE?
+            How many people do you have to serve?
           </h1>
           <div className="buttons flex items-center justify-between ">
             {[2, 4, 8].map((buttonValue) => (
@@ -103,19 +102,19 @@ export default function DiscreteSlider() {
                     className="px-4 hover:bg-gray-100 cursor-pointer w-full"
                     onClick={() => handleProficiencySelect("Novice")}
                   >
-                    NOVICE
+                    Novice
                   </li>
                   <li
                     className="px-4 hover:bg-gray-100 cursor-pointer w-full"
                     onClick={() => handleProficiencySelect("Intermediate")}
                   >
-                    INTERMEDIATE
+                    Intermediate
                   </li>
                   <li
                     className="px-4 hover:bg-gray-100 cursor-pointer"
                     onClick={() => handleProficiencySelect("Expert")}
                   >
-                    EXPERT
+                    Expert
                   </li>
                 </ul>
               </div>
@@ -130,6 +129,6 @@ export default function DiscreteSlider() {
           ></Switch>
         </div>
       </div>
-    </div>
+   
   );
 }
