@@ -17,7 +17,7 @@ const GoogleLoginButton = () => {
 
     useEffect(() => {
         if (user != null) {
-            navigate('/signup')
+            navigate('/login')
         }
     }, [user, navigate]);
     return <GoogleButton onClick={handleGoogleSignIn} />;
