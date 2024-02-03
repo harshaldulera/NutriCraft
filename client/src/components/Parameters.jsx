@@ -38,6 +38,40 @@ export default function DiscreteSlider() {
   const handleToggle = () => {
     setIsVeg(!isVeg);
   };
+
+
+
+  // Generate Recipe
+  const generateRecipe = async () => {
+    try {
+       const response = await fetch('/generate-recipe', {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({
+           dietRestrictions: isVeg ? 'veg' : 'non-veg',
+           ingredients: ingredients, // Assuming ingredients is passed as a prop
+           cooking_time: value,
+           people: selectedButton,
+           difficulty: selectedProficiency.toLowerCase(),
+         }),
+       });
+   
+       if (!response.ok) {
+         throw new Error('Network response was not ok');
+       }
+   
+       const recipe = await response.json();
+       console.log(recipe);
+       // Handle the received recipe here
+    } catch (error) {
+       console.error('Error:', error);
+       // Handle errors here
+    }
+   };
+
+   
   return (
       <div className="bg-secondary-50 max-w-6xl mx-auto rounded-xl flex flex-col items-center justify-center content-center shadow-md my-8 h-screen">
         <h1 className="text-2xl font-bold mb-4">How much time do you have?</h1>
@@ -62,7 +96,7 @@ export default function DiscreteSlider() {
             How many people do you have to serve?
           </h1>
           <div className="buttons flex items-center justify-between ">
-            {[2, 4, 8].map((buttonValue) => (
+            {[2, 4, 6].map((buttonValue) => (
               <Button
                 key={buttonValue}
                 style={{
@@ -75,7 +109,7 @@ export default function DiscreteSlider() {
                 }}
                 onClick={() => handleButtonClick(buttonValue)}
               >
-                {buttonValue} PEOPLE
+                {buttonValue} People
               </Button>
             ))}
           </div>

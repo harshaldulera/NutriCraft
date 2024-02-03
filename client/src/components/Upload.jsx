@@ -3,7 +3,11 @@ import { useRef, useState } from "react";
 export default function Upload() {
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef(null);
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
   const [files, setFiles] = useState([]);
+  const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+  const [isCapturing, setIsCapturing] = useState(false);
 
   function handleChange(e) {
     e.preventDefault();
@@ -64,6 +68,52 @@ export default function Upload() {
     inputRef.current.value = "";
     inputRef.current.click();
   }
+  const handleCaptureClick = async () => {
+    try {
+      setIsCapturing(true);
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+      }
+    } catch (error) {
+      console.error('Error accessing camera:', error);
+    }
+  };
+
+
+  const handleCaptureImage = () => {
+    if (videoRef.current && canvasRef.current) {
+      const context = canvasRef.current.getContext('2d');
+      context.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height);
+      const imageDataURL = canvasRef.current.toDataURL('image/png');
+      setImage(imageDataURL);
+      setIsCapturing(false);
+    }
+  };
+
+  const handleStopCapture = () => {
+    if (videoRef.current) {
+      const stream = videoRef.current.srcObject;
+      if (stream) {
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+        videoRef.current.srcObject = null;
+        setIsCapturing(false);
+      }
+    }
+  };
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <div className="flex items-center justify-center h-screen">
@@ -136,6 +186,9 @@ export default function Upload() {
             Stop Capture
           </button>
         </>
+      )}
+      {isCapturing && (
+        <canvas ref={canvasRef} className="hidden"></canvas>
       )}
       </form>
     </div>
