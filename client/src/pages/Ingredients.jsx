@@ -9,6 +9,7 @@ import Upload from '../components/Upload';
 import Parameters from '../components/Parameters';
 import Recipe from '../components/Recipe';
 import Modal from '@mui/material/Modal';
+import { Hourglass } from 'react-loader-spinner'
 
 
 const style = {
@@ -21,6 +22,7 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  paddingLeft: '32%',
 };
 
 const steps = ['Take a Photo', 'Choose your Preferences', 'Get the Recipes'];
@@ -85,7 +87,15 @@ export default function Ingredients() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-            
+            <Hourglass
+    visible={true}
+    height="80"
+    width="80"
+    ariaLabel="hourglass-loading"
+    wrapperStyle={{}}
+    wrapperClass=""
+    colors={['#306cce', '#72a1ed']}
+    />
         </Box>
       </Modal>
     <Box sx={{ width: '100%', pt:10}}>
