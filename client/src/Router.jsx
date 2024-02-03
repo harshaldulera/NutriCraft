@@ -4,6 +4,7 @@ import Login from "./pages/Auth/Login";
 import Upload from "./components/Upload";
 import Signup from "./pages/Auth/Signup";
 import Parameters  from "./components/Parameters";
+import CopyUpload from "./components/CopyUpload";
 export const Router = () => {
     return (
         <>
@@ -11,6 +12,7 @@ export const Router = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path='/upload' element={<Upload/>}/>
+                <Route path='copyupload' element={<CopyUpload/>}/>
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/parameters" element={<Parameters/>}/>
             </Routes>

@@ -1,3 +1,5 @@
+import Logo from "../assets/Logo.svg" 
+
 const Navbar = () => {
     return (
       <nav className="fixed z-30 w-full bg-primary-100 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -37,9 +39,9 @@ const Navbar = () => {
                   ></path>
                 </svg>
               </button>
-              <a href=" flex ml-2 md:mr-24">
+              <a href=" flex ml-2 md:mr-24" >
                 <img
-                  src="/images/logo.svg"
+                  src={Logo}
                   className="h-8 mr-3"
                   alt="Logo"
                 />
@@ -77,20 +79,7 @@ const Navbar = () => {
               </form>
             </div>
             <div className="flex items-center">
-              <div className="hidden mr-3 -mb-1 sm:block">
-                <a
-                  className="github-button"
-                  href="https://github.com/themesberg/flowbite-admin-dashboard"
-                  data-color-scheme="no-preference: dark; light: light; dark: light;"
-                  data-icon="octicon-star"
-                  data-size="large"
-                  data-show-count="true"
-                  aria-label="Star themesberg/flowbite-admin-dashboard on GitHub"
-                >
-                  Star
-                </a>
-              </div>
-  
+            
               <button
                 id="toggleSidebarMobileSearch"
                 type="button"

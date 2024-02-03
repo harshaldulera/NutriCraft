@@ -22,15 +22,15 @@ const generationConfig = {
 
 const model = googleAI.getGenerativeModel({ model: "gemini-pro",  generationConfig });
  
-const generateIngredients = async () => {
+export const generateIngredients = async (b64) => {
   try {
     // Read image file
-    const filePath = "cake-ing.jpg";
+    const filePath = "family.jpg";
     const imageFile = await fs.readFile(filePath);
     const imageBase64 = imageFile.toString("base64");
  
     const promptConfig = [
-      { text: "Recognise the ingredients and give me a space separated list of ingredients without any other information or formatting" },
+      { text: "Recognise the ingredients and give me a space separated list of ingredients without any other information or formatting, if there are no ingredients output a single word ERROR" },
       {
         inlineData: {
           mimeType: "image/jpeg",
@@ -53,7 +53,7 @@ const generateIngredients = async () => {
 const generateInfo = async () => {
   try {
     // Read image file
-    const filePath = "cake.jpg";
+    const filePath = "family.jpg";
     const imageFile = await fs.readFile(filePath);
     const imageBase64 = imageFile.toString("base64");
  
