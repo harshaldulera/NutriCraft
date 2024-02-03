@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import TimerIcon from "@mui/icons-material/Timer";
 import Switch from "@mui/material/Switch";
 
-export default function DiscreteSlider(props) {
+export default function Parameters(props) {
   const [value, setValue] = React.useState(15);
 
   const handleChange = (event, newValue) => {
@@ -41,6 +41,7 @@ export default function DiscreteSlider(props) {
 
   // Generate Recipe
   const generateRecipe = async () => {
+    props.setOpen(true)
     try {
        const response = await fetch('http://localhost:3000/generate-recipe', {
          method: 'POST',
@@ -49,7 +50,7 @@ export default function DiscreteSlider(props) {
          },
          body: JSON.stringify({
            dietRestrictions: isVeg ? 'veg' : 'non-veg',
-           ingredients: props.ingredients, // Assuming ingredients is passed as a prop
+           ingredients: props.ing, // Assuming ingredients is passed as a prop
            cooking_time: value,
            people: selectedButton,
            difficulty: selectedProficiency.toLowerCase(),
@@ -59,10 +60,14 @@ export default function DiscreteSlider(props) {
        if (!response.ok) {
          throw new Error('Network response was not ok');
        }
-   
-       const recipe = await response.json();
-       console.log(recipe);
+       
+      //  console.log(response)
+       const recipe = await response.text();
+      //  console.log(recipe);
        // Handle the received recipe here
+       props.setRecipe(recipe)
+       props.setOpen(false)
+       props.handleNext()
     } catch (error) {
        console.error('Error:', error);
        // Handle errors here
@@ -72,8 +77,8 @@ export default function DiscreteSlider(props) {
    
   return (
     <div>
-      <div className="bg-primary-100 mt-15 pt-10 max-w-4xl mx-auto rounded-xl flex flex-col items-center  content-center gap-10 shadow-md my-8 h-screen">
-        <h1 className="text-xl font-bold mb-4">How much time do you have?</h1>
+      <div className="bg-primary-100  max-w-4xl mx-auto rounded-xl flex flex-col items-center  content-center gap-10 shadow-md h-screen">
+        <h1 className="text-xl font-bold my-4">How much time do you have?</h1>
         <div className="w-80 flex justify-end">
           <Slider
             aria-label="Temperature"

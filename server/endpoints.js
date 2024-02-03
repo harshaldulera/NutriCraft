@@ -136,7 +136,7 @@ async function generateRecipe(dietRestrictions, ingredients, cooking_time, peopl
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
-    console.log(text);
+    return text;
   }
 
   app.post('/generate-recipe', async (req, res) => {
@@ -147,7 +147,7 @@ async function generateRecipe(dietRestrictions, ingredients, cooking_time, peopl
        const recipe = await generateRecipe(dietRestrictions, ingredients, cooking_time, people, difficulty);
    
        // Send the generated recipe back to the client
-       res.status(200).json(recipe);
+       res.status(200).send(recipe);
     } catch (error) {
        console.error('Error generating recipe:', error);
        res.status(500).send('An error occurred while generating the recipe');

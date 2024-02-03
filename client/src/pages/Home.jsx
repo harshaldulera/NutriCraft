@@ -12,7 +12,7 @@ const Home = () => {
        
         <div className="home">
           <Box
-            page="recipe"
+            page="ingredients"
             imageSrc={girlfood}
             altText="meal icon"
             title="Meal Tracking"

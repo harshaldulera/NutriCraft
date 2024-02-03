@@ -6,9 +6,9 @@ import Signup from "./pages/Auth/Signup";
 import Parameters  from "./components/Parameters";
 import CopyUpload from "./components/CopyUpload";
 import Recipe from "./components/Recipe";
-import Heatmap from "./components/Heatmap";
+import Meal from "./pages/Meal";import Heatmap from "./components/Heatmap";
 import Ingredients from "./pages/Ingredients";
-
+import DrawerComponent from "./components/TemporaryDrawer";
 import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
 import Stats from "./pages/Stats";
@@ -31,6 +31,11 @@ export const Router = () => {
                 <Route path="/stats" element={<Stats />} />
                 {/* <Route path="/dashboard" element={<Barchart />} />   */}
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/dashboard" element={<Dashboard />} />  
+                <Route path="/ingredients" element={<Ingredients />} />  
+                <Route path='/meal' element={<Meal/>}/>
+                <Route path="/drawer" element={<DrawerComponent/>}/>
+                
             </Routes>
         </>
     );

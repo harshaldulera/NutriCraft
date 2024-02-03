@@ -5,8 +5,14 @@ import StarIcon from '@mui/icons-material/Star';
 import PeopleIcon from '@mui/icons-material/People';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 
-const Recipe = () => {
-
+const Recipe = (props) => {
+    let rec = props.recipe
+    
+    let resultString
+    if (rec.startsWith('```json') && rec.endsWith('```')) {
+        resultString = rec.substring('```json'.length, rec.length - '```'.length);}
+    let recipe = JSON.parse(resultString)
+    console.log(recipe)
     const recipeData = {
         title: "Delicious Recipe",
         description: "A tasty dish you'll love!",
@@ -15,13 +21,13 @@ const Recipe = () => {
       };
     
     return(
-        <div className="bg-secondary-50 relative mx-auto rounded-lg flex mt-5 min-h-[95vh] max-w-6xl flex-col items-center">
+        <div className="bg-secondary-50 relative mx-auto rounded-lg flex  min-h-[95vh] max-w-6xl flex-col items-center">
             <main className="flex-1">
                 <div className="">
                     <section className="mx-auto flex max-w-5xl flex-col items-center gap-2 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20">
                     <h1 className="text-center text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
                         <Card
-                         title={recipeData.title}
+                         title={recipe.title}
                          />
                     </h1>
                     {/* <h1>Recipe Name</h1> */}
@@ -30,8 +36,8 @@ const Recipe = () => {
                         <div className="rounded-lg border w-full">
                             <div className='flex flex-col space-y-1.5 p-6 '>
                             <Card
-                             title={recipeData.title}
-                             description={recipeData.description}
+                             title={recipe.title}
+                             description={recipe.description}
                              />
                             </div>
                             <div className='p-6 pt-0 space-y-4 text-sm'>
@@ -43,25 +49,25 @@ const Recipe = () => {
                                         <div className='flex gap-2 text-muted-foreground'>
                                             <TimerIcon className="ml-5"></TimerIcon>
                                             <span>
-                                            <Typography variant="body1">15 mins</Typography>
+                                            <Typography variant="body1">{recipe.cooking_time} minutes</Typography>
                                             </span>
                                         </div>
                                         <div className='flex gap-2 text-muted-foreground'>
                                             <StarIcon className="ml-5"></StarIcon>
                                             <span>
-                                            <Typography variant="body1">Expert</Typography>
+                                            <Typography variant="body1">{recipe.difficulty}</Typography>
                                             </span>
                                         </div>
                                         <div className='flex gap-2 text-muted-foreground'>
                                             <PeopleIcon className="ml-5"></PeopleIcon>
                                             <span>
-                                            <Typography variant="body1">2 Serving</Typography>
+                                            <Typography variant="body1">{(recipe.people)?recipe.people:"2 Serving"}</Typography>
                                             </span>
                                         </div>
                                         <div className='flex gap-2 text-muted-foreground'>
                                             <WhatshotIcon className="ml-5"></WhatshotIcon>
                                             <span>
-                                            <Typography variant="body1">250 Calories</Typography>
+                                            <Typography variant="body1">{recipe.calories}</Typography>
                                             </span>
                                         </div>
                                     </div>
@@ -71,13 +77,13 @@ const Recipe = () => {
                             <div className='p-6 space-y-2'>
                              <h1 className='text-lg font-semibold'>Ingredients</h1>
                              <Card
-                             inglist={recipeData.inglist}
+                             inglist={recipe.ingredients}
                              />
                             </div>
                             <div className='p-6 space-y-2 '>
                                 <h1 className='text-lg font-semibold'>Instructions</h1>
                                 <Card
-                                inslist={recipeData.inslist}
+                                inslist={recipe.instructions}
                                 />
                             </div>
                             <div className=' flex items-center p-6 pt-0'>

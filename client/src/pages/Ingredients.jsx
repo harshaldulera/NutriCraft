@@ -6,13 +6,35 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Upload from '../components/Upload';
+import Parameters from '../components/Parameters';
+import Recipe from '../components/Recipe';
+import Modal from '@mui/material/Modal';
+import { Hourglass } from 'react-loader-spinner'
+
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  paddingLeft: '32%',
+};
 
 const steps = ['Take a Photo', 'Choose your Preferences', 'Get the Recipes'];
 
 export default function Ingredients() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [activeStep, setActiveStep] = React.useState(0);
   const [ing, setIng] = React.useState();
   const [skipped, setSkipped] = React.useState(new Set());
+  const [recipe, setRecipe] = React.useState()
 
   const isStepOptional = (step) => {
     return false;
@@ -57,6 +79,25 @@ export default function Ingredients() {
   };
 
   return (
+    <>
+    <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+            <Hourglass
+    visible={true}
+    height="80"
+    width="80"
+    ariaLabel="hourglass-loading"
+    wrapperStyle={{}}
+    wrapperClass=""
+    colors={['#306cce', '#72a1ed']}
+    />
+        </Box>
+      </Modal>
     <Box sx={{ width: '100%', pt:10}}>
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
@@ -80,9 +121,19 @@ export default function Ingredients() {
      
 
        {activeStep === 0 && (
-        <div><Upload setIng={setIng} handleNext={handleNext}/></div>
+        <div><Upload setIng={setIng} handleNext={handleNext} setOpen={setOpen}/></div>
         
       )}
+       {activeStep === 1 && (
+        <div><Parameters ing={ing} handleNext={handleNext} setRecipe={setRecipe} setOpen={setOpen}/></div>
+        
+      )}
+       {activeStep === 2 && (
+        <div><Recipe recipe={recipe} handleNext={handleNext} setOpen={setOpen}/></div>
+        
+      )}
+      
     </Box>
+    </>
   );
 }
