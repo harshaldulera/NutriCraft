@@ -28,8 +28,7 @@ const ApexChart = () => {
 
   return (
     <div>
-      <div id="chart" style={{backgroundColor: "white", height:300,
-          width:400, border: "1px solid black", borderRadius:"1em"}}>
+      <div className="bg-white shadow rounded-lg p-4 mb-6">
         <ReactApexChart options={chartState.options} series={chartState.series} type="pie" width={380} />
       </div>
       <div id="html-dist"></div>

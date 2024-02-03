@@ -12,6 +12,7 @@ import Ingredients from "./pages/Ingredients";
 import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
 import Stats from "./pages/Stats";
+import Profile from "./pages/Profile";
 
 export const Router = () => {
     return (
@@ -29,6 +30,7 @@ export const Router = () => {
                 <Route path="/recipe" element={<Recipe />} />
                 <Route path="/stats" element={<Stats />} />
                 {/* <Route path="/dashboard" element={<Barchart />} />   */}
+                <Route path="/profile" element={<Profile />} />
             </Routes>
         </>
     );
