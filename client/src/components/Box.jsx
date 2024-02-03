@@ -11,7 +11,7 @@ const Box = ({ page, imageSrc, altText, title, description }) => {
       <img src={imageSrc} alt={altText} className="box-image" />
       <h2>{title}</h2>
       <p>{description}</p>
-      <iframe title={title}></iframe>
+      {/* <iframe title={title}></iframe> */}
     </div>
   );
 };
