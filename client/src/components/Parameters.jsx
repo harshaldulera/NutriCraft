@@ -1,9 +1,7 @@
-import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
-import React, { useState, useRef } from "react";
-import Stack from "@mui/material/Stack";
-import { Button, Menu, MenuItem } from "@mui/material";
+import React, { useState } from "react";
+import { Button } from "@mui/material";
 import TimerIcon from "@mui/icons-material/Timer";
 import Switch from "@mui/material/Switch";
 
