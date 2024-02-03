@@ -74,8 +74,8 @@ export default function DiscreteSlider(props) {
    
   return (
     <div>
-      <div className="bg-secondary-50 max-w-6xl mx-auto rounded-xl flex flex-col items-center justify-center content-center shadow-md my-8 h-screen">
-        <h1 className="text-2xl font-bold mb-4">How much time do you have?</h1>
+      <div className="bg-primary-100 mt-15 pt-10 max-w-4xl mx-auto rounded-xl flex flex-col items-center  content-center gap-10 shadow-md my-8 h-screen">
+        <h1 className="text-xl font-bold mb-4">How much time do you have?</h1>
         <div className="w-80 flex justify-end">
           <Slider
             aria-label="Temperature"
@@ -86,26 +86,28 @@ export default function DiscreteSlider(props) {
             marks
             min={5}
             max={120}
+            sx={{color:'#34693a'}}
           />
           <div className="flex flex-row">
-          <TimerIcon className="ml-5"></TimerIcon>
-          <Typography variant="body1"> {value} mins</Typography>
+          <TimerIcon className="ml-5" sx={{color:'#34693a'}}></TimerIcon>
+          <Typography variant="body1" > {value}mins</Typography>
           </div>
         </div>
         <div className="number-of-ppl">
-          <h1 className="text-2xl font-bold mb-5">
+          <h1 className="text-xl font-bold mb-5">
             How many people do you have to serve?
           </h1>
-          <div className="buttons flex items-center justify-between ">
+          <div className="buttons flex items-center justify-between text-xl font-bold">
             {[2, 4, 6].map((buttonValue) => (
               <Button
                 key={buttonValue}
+                sx={{backgroundColor:'#34693a', color:'black'}}
                 style={{
-                  color: selectedButton === buttonValue ? "black" : "inherit",
+                  
                   border:
                     selectedButton === buttonValue ? "2px solid black" : "none",
                   marginRight: buttonValue < 2 ? "8px" : "0",
-                  backgroundColor: "#65a30d",
+                  
                   width: "30%",
                 }}
                 onClick={() => handleButtonClick(buttonValue)}
@@ -121,12 +123,13 @@ export default function DiscreteSlider(props) {
           </h2>
           <div>
             <div className="relative">
-              <button
+              <Button
+              sx={{backgroundColor:'#34693a', color:'black'}}
                 className="bg-primary-300 px-4 py-2 rounded-md text-center w-full"
                 onClick={handleDropdownToggle}
               >
                 {selectedProficiency}
-              </button>
+              </Button>
               <div
                 className={`absolute z-10 top-full left-0 w-full bg-white rounded-md shadow-lg ${
                   isOpen ? "block" : "hidden"
@@ -156,20 +159,24 @@ export default function DiscreteSlider(props) {
             </div>
           </div>
         </div>
-        <div className="flex items-center space-x-4">
+        <div className="flex  justify-center space-x-4">
+          <span className="text-xl font-bold mb-4">Veg </span> 
           <Switch
             onClick={handleToggle}
             className={`rounded-full  ${isVeg ? "bg-green-400" : "bg-red-500"}`}
             label="isVeg ? 'Veg' : 'Non Veg'"
           ></Switch>
+          <span className="text-xl font-bold mb-4">Non-Veg </span>
         </div>
         <div>
-        <button
-                className="bg-primary-300 mt-4 px-4 py-4 rounded-md text-center w-full"
+        <Button
+                size="large"
                 onClick={generateRecipe}
+                sx={{backgroundColor:'#34693a', color:'black', width:8/9, height:4/5}}
+                
               >
-                Generate recipe
-              </button>
+                Generate Recipe!
+              </Button>
         </div>
       </div>
     </div>
