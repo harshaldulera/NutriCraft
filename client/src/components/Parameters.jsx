@@ -92,7 +92,7 @@ export default function DiscreteSlider() {
           />
         </div>
         <div className="number-of-ppl">
-          <h1 className="text-2xl font-bold mb-4">
+          <h1 className="text-2xl font-bold mb-5">
             How many people do you have to serve?
           </h1>
           <div className="buttons flex items-center justify-between ">
@@ -115,7 +115,7 @@ export default function DiscreteSlider() {
           </div>
         </div>
         <div className="rounded-lg p-6">
-          <h2 className="text-xl font-bold text-center mb-4">
+          <h2 className="text-xl font-bold text-center mb-5">
             Are you a good chef?
           </h2>
           <div>
