@@ -5,6 +5,7 @@ import Upload from "./components/Upload";
 import Signup from "./pages/Auth/Signup";
 import Parameters  from "./components/Parameters";
 import CopyUpload from "./components/CopyUpload";
+import Recipe from "./components/Recipe";
 import Heatmap from "./components/Heatmap";
 export const Router = () => {
     return (
@@ -16,7 +17,6 @@ export const Router = () => {
                 <Route path='copyupload' element={<CopyUpload/>}/>
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/parameters" element={<Parameters ingredients="flour sugar butter eggs milk baking powder vanilla"/>}/>
-                <Route path="/dashboard" element={<Heatmap />} />
             </Routes>
         </>
     );
