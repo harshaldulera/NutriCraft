@@ -230,18 +230,20 @@ export default function Upload(props) {
         <>
           <video ref={videoRef} autoPlay playsInline className="mt-4 max-w-full max-h-48 rounded shadow-md" />
           <br />
+          <div className="flex ">
           <button
             onClick={handleCaptureImage}
-            className="bg-green-500 text-white px-4 py-2 rounded mt-2"
+            className="bg-green-500 text-white  text-xs px-2 py-1 rounded mt-2"
           >
             Capture Image
           </button>
           <button
             onClick={handleStopCapture}
-            className="bg-red-500 text-white px-4 py-2 rounded mt-2 ml-2"
+            className="bg-red-500 text-white text-xs px-4 py-2 rounded mt-2 ml-2"
           >
             Stop Capture
           </button>
+          </div>
         </>
       )}
       {isCapturing && (
@@ -260,7 +262,7 @@ export default function Upload(props) {
             
             <button
               id="capture"
-              className="text-white px-4 py-2 rounded mt-4"
+              className="text-white px-4 py-2 rounded mt-4 text-xs"
               onClick={() => {handleUploadClick()}}
             >
               Upload

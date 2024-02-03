@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import TimerIcon from "@mui/icons-material/Timer";
 import Switch from "@mui/material/Switch";
 
-export default function DiscreteSlider(props) {
+export default function Parameters(props) {
   const [value, setValue] = React.useState(15);
 
   const handleChange = (event, newValue) => {
@@ -49,7 +49,7 @@ export default function DiscreteSlider(props) {
          },
          body: JSON.stringify({
            dietRestrictions: isVeg ? 'veg' : 'non-veg',
-           ingredients: props.ingredients, // Assuming ingredients is passed as a prop
+           ingredients: props.ing, // Assuming ingredients is passed as a prop
            cooking_time: value,
            people: selectedButton,
            difficulty: selectedProficiency.toLowerCase(),
@@ -59,10 +59,13 @@ export default function DiscreteSlider(props) {
        if (!response.ok) {
          throw new Error('Network response was not ok');
        }
-   
-       const recipe = await response.json();
-       console.log(recipe);
+       
+      //  console.log(response)
+       const recipe = await response.text();
+      //  console.log(recipe);
        // Handle the received recipe here
+       props.setRecipe(recipe)
+       props.handleNext()
     } catch (error) {
        console.error('Error:', error);
        // Handle errors here

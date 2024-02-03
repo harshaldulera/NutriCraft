@@ -6,7 +6,7 @@ import Signup from "./pages/Auth/Signup";
 import Parameters  from "./components/Parameters";
 import CopyUpload from "./components/CopyUpload";
 import Recipe from "./components/Recipe";
-
+import Meal from "./pages/Meal";
 
 import Ingredients from "./pages/Ingredients";
 
@@ -28,6 +28,7 @@ export const Router = () => {
                 <Route path="/recipe" element={<Recipe />} />
                 <Route path="/dashboard" element={<Dashboard />} />  
                 <Route path="/ingredients" element={<Ingredients />} />  
+                <Route path='/meal' element={<Meal/>}/>
                 
             </Routes>
         </>

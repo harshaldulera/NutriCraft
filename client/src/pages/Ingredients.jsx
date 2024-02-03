@@ -6,6 +6,9 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Upload from '../components/Upload';
+import Parameters from '../components/Parameters';
+import Recipe from '../components/Recipe';
+
 
 const steps = ['Take a Photo', 'Choose your Preferences', 'Get the Recipes'];
 
@@ -13,6 +16,7 @@ export default function Ingredients() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [ing, setIng] = React.useState();
   const [skipped, setSkipped] = React.useState(new Set());
+  const [recipe, setRecipe] = React.useState()
 
   const isStepOptional = (step) => {
     return false;
@@ -83,6 +87,15 @@ export default function Ingredients() {
         <div><Upload setIng={setIng} handleNext={handleNext}/></div>
         
       )}
+       {activeStep === 1 && (
+        <div><Parameters ing={ing} handleNext={handleNext} setRecipe={setRecipe}/></div>
+        
+      )}
+       {activeStep === 2 && (
+        <div><Recipe recipe={recipe} handleNext={handleNext}/></div>
+        
+      )}
+      
     </Box>
   );
 }
