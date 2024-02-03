@@ -7,6 +7,7 @@ import Parameters  from "./components/Parameters";
 import CopyUpload from "./components/CopyUpload";
 import Recipe from "./components/Recipe";
 import Stats from "./pages/Stats";
+
 export const Router = () => {
     return (
         <>

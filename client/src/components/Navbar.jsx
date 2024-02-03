@@ -15,7 +15,7 @@ const Navbar = () => {
       const docSnap = await getDoc(userDoc);
       if (docSnap.exists()) {
         const userData = docSnap.data();
-        console.log(userData);
+        // console.log(userData);
         setUserProfile(docSnap.data()); // Update state with user data
       } else {
         console.log("No such documents.");
