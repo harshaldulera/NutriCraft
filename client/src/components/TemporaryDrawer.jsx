@@ -9,6 +9,7 @@ import { grey } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import * as React from 'react';
+import Upload from './Upload';
 
 const drawerBleeding = 56;
 
@@ -54,9 +55,15 @@ function SwipeableEdgeDrawer(props) {
           },
         }}
       />
-      <Box sx={{ textAlign: 'center', pt: 1, paddingTop: 15}}>
+      <Box sx={{ textAlign: 'center', pt: 1, paddingTop: 15, height:30, width: 35}}>
         <Button onClick={toggleDrawer(true)}>Open</Button>
       </Box>
+      <div>
+        {/* //add image here */}
+        <Upload
+        image={props.image}
+        />
+      </div>
       <SwipeableDrawer
         container={container}
         anchor="bottom"
