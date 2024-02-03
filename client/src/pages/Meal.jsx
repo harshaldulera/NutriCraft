@@ -115,7 +115,7 @@ export default function Meal() {
       };
       reader.readAsDataURL(file);
     }
-  };
+  }
 
   const handleUploadClick = async () => {
     console.log("HI1");

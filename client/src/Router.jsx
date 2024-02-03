@@ -8,7 +8,7 @@ import CopyUpload from "./components/CopyUpload";
 import Recipe from "./components/Recipe";
 import Meal from "./pages/Meal";import Heatmap from "./components/Heatmap";
 import Ingredients from "./pages/Ingredients";
-
+import TemporaryDrawer from "./components/TemporaryDrawer";
 import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
 import Stats from "./pages/Stats";
@@ -30,6 +30,7 @@ export const Router = () => {
                 <Route path="/dashboard" element={<Dashboard />} />  
                 <Route path="/ingredients" element={<Ingredients />} />  
                 <Route path='/meal' element={<Meal/>}/>
+                <Route path="/drawer" element={<TemporaryDrawer/>}/>
                 
             </Routes>
         </>

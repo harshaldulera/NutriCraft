@@ -41,6 +41,7 @@ export default function Parameters(props) {
 
   // Generate Recipe
   const generateRecipe = async () => {
+    props.setOpen(true)
     try {
        const response = await fetch('http://localhost:3000/generate-recipe', {
          method: 'POST',
@@ -65,6 +66,7 @@ export default function Parameters(props) {
       //  console.log(recipe);
        // Handle the received recipe here
        props.setRecipe(recipe)
+       props.setOpen(false)
        props.handleNext()
     } catch (error) {
        console.error('Error:', error);

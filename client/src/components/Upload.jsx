@@ -119,7 +119,7 @@ export default function Upload(props) {
   };
 
   const handleUploadClick = async () => {
-    console.log("HI1")
+    props.setOpen(true)
     if (!image) {
        alert('Please select an image first.');
        return;
@@ -153,6 +153,7 @@ export default function Upload(props) {
        // Move to next screen bro
       //  alert(`Ingredients: ${ings}`);
       props.setIng(ings)
+      props.setOpen(false)
       props.handleNext()
     } catch (error) {
        console.error('Error:', error);
