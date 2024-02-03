@@ -15,7 +15,7 @@ const Home = () => {
 
         <div className="home">
           <Box
-            page="Meal.jsx"
+            page="recipe"
             imageSrc={girlfood}
             altText="meal icon"
             title="Meal Tracking"
@@ -29,7 +29,7 @@ const Home = () => {
             description="Monitor your physical activities and workouts."
           />
           <Box
-            page="Stats.jsx"
+            page="stats"
             imageSrc={girlicon}
             altText="Stats Icon"
             title="Stats"

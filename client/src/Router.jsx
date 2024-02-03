@@ -6,6 +6,7 @@ import Signup from "./pages/Auth/Signup";
 import Parameters  from "./components/Parameters";
 import CopyUpload from "./components/CopyUpload";
 import Recipe from "./components/Recipe";
+import Stats from "./pages/Stats";
 export const Router = () => {
     return (
         <>
@@ -17,6 +18,7 @@ export const Router = () => {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/parameters" element={<Parameters ingredients="flour sugar butter eggs milk baking powder vanilla"/>}/>
                 <Route path="/recipe" element={<Recipe />} />
+                <Route path="/stats" element={<Stats />} />
             </Routes>
         </>
     );
