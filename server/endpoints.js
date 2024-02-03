@@ -5,7 +5,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const app = express();
 app.use(cors()); 
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
 
 
 const googleAI = new GoogleGenerativeAI('AIzaSyDwFpFuzIOP94lBQy99OczN0uJkUubTqas');
@@ -25,14 +25,16 @@ const generationConfig = {
 
 const model = googleAI.getGenerativeModel({ model: "gemini-pro",  generationConfig });
 
-const generateIngredients = async (filePath) => {
+const generateIngredients = async (b64) => {
     try {
       // Read image file
-      const imageFile = await fs.readFile(filePath);
-      const imageBase64 = imageFile.toString("base64");
+    //   const imageFile = await fs.readFile("./server/cake-ing.jpg");
+    //   const imageBase64 = imageFile.toString("base64");
+      //console.log(imageBase64)
+    const imageBase64 = b64
    
       const promptConfig = [
-        { text: "Recognise the ingredients and give me a space separated list of ingredients without any other information or formatting, if there are no ingredients output a single word ERROR" },
+        { text: "Recognise the ingredients and give me a space separated list of ingredients without any other information or formatting and if you dont find any ingredients just output ERROR" },
         {
           inlineData: {
             mimeType: "image/jpeg",
@@ -54,9 +56,11 @@ const generateIngredients = async (filePath) => {
 
 app.post('/generate-ingredients', async (req, res) => {
  try {
-    const filePath = req.body.filePath;
-    const ingredients = await generateIngredients(filePath);
-    console.log(ingredients)
+    const b64 = req.body.b64.split(',')[1];
+
+    // console.log("TEST:\n\n\n\n\n\n\n\n\n" + b64)
+    const ingredients = await generateIngredients(b64);
+    // console.log(ingredients)
     res.status(200).send(ingredients);
  } catch (error) {
     console.error('Error generating ingredients:', error);

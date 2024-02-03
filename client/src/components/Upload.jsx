@@ -75,13 +75,16 @@ export default function Upload() {
   return (
     <div>
     <div
-      className={`text-center mt-8 border-4 border-primary-500 rounded p-8 bg-cover bg-center relative h-screen w-screen ${
+      className={`text-center border-4 border-primary-500 rounded p-8 bg-cover bg-center relative h-screen   w-90 ${
         image ? 'lg:flex-row' : 'lg:flex-col'
       }`}
       style={{ backgroundImage: "url('client/src/assets/backgorund.jpeg')" }}
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
+      <div className="w-1/2 h-screen/2 border border-dotted border-gray-700 mx-auto my-auto">
+
+      </div>
       <h2 className="text-2xl text-lime-100 font-bold mb-4">Image Uploader</h2>
       <label
         htmlFor="imageInput"

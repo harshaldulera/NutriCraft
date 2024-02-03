@@ -4,6 +4,7 @@ import fs from "fs/promises";
 export default function CopyUpload() {
   const [image, setImage] = useState(null);
   const [isCapturing, setIsCapturing] = useState(false);
+  const [ingredients, setIngredients] = useState(" ERROR");
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
@@ -74,37 +75,44 @@ export default function CopyUpload() {
   };
 
   const handleUploadClick = async () => {
+    console.log("HI1")
     if (!image) {
        alert('Please select an image first.');
        return;
     }
-   
+    
+    const base64Image = image.toString("base64");
+    //console.log(base64Image)
     try {
-       // Create a blob URL from the image data
-       const blob = await (await fetch(image)).blob();
-       const blobUrl = URL.createObjectURL(blob);
-   
-       // Send the blob URL to the server
        const response = await fetch('http://localhost:3000/generate-ingredients', {
          method: 'POST',
          headers: {
            'Content-Type': 'application/json',
          },
-         body: JSON.stringify({ filePath: blobUrl }),
+         body: JSON.stringify({ b64: base64Image }),
        });
    
        if (!response.ok) {
          throw new Error('Network response was not ok');
        }
    
-       const ingredients = await response.text();
+       const ings = await response.text();
+       console.log(ingredients)
+       if(ings == " ERROR")
+       {
+        alert('Failed to generate ingredients. Please upload another image.');
+       }
+       else
+       {
+        setIngredients(ings)
+       }
+       // Move to next screen bro
        alert(`Ingredients: ${ingredients}`);
     } catch (error) {
        console.error('Error:', error);
-       alert('Failed to generate ingredients.');
+       alert('Failed to generate ingredients. Please upload another image.');
     }
    };
-   
 
   return (
     <div>
