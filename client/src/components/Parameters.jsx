@@ -7,7 +7,7 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import TimerIcon from "@mui/icons-material/Timer";
 import Switch from "@mui/material/Switch";
 
-export default function DiscreteSlider() {
+export default function DiscreteSlider(props) {
   const [value, setValue] = React.useState(15);
 
   const handleChange = (event, newValue) => {
@@ -44,14 +44,14 @@ export default function DiscreteSlider() {
   // Generate Recipe
   const generateRecipe = async () => {
     try {
-       const response = await fetch('/generate-recipe', {
+       const response = await fetch('http://localhost:3000/generate-recipe', {
          method: 'POST',
          headers: {
            'Content-Type': 'application/json',
          },
          body: JSON.stringify({
            dietRestrictions: isVeg ? 'veg' : 'non-veg',
-           ingredients: ingredients, // Assuming ingredients is passed as a prop
+           ingredients: props.ingredients, // Assuming ingredients is passed as a prop
            cooking_time: value,
            people: selectedButton,
            difficulty: selectedProficiency.toLowerCase(),
@@ -76,11 +76,7 @@ export default function DiscreteSlider() {
     <div>
       <div className="bg-secondary-50 max-w-6xl mx-auto rounded-xl flex flex-col items-center justify-center content-center shadow-md my-8 h-screen">
         <h1 className="text-2xl font-bold mb-4">How much time do you have?</h1>
-        <div className="w-80 ml-2 order-2 text-right flex flex-end">
-          <TimerIcon></TimerIcon>
-          <Typography variant="body1"> {value} mins</Typography>
-        </div>
-        <div className="w-80  ">
+        <div className="w-80 flex justify-end">
           <Slider
             aria-label="Temperature"
             value={value}
@@ -91,6 +87,10 @@ export default function DiscreteSlider() {
             min={5}
             max={120}
           />
+          <div className="flex flex-row">
+          <TimerIcon className="ml-5"></TimerIcon>
+          <Typography variant="body1"> {value} mins</Typography>
+          </div>
         </div>
         <div className="number-of-ppl">
           <h1 className="text-2xl font-bold mb-5">
@@ -166,7 +166,7 @@ export default function DiscreteSlider() {
         <div>
         <button
                 className="bg-primary-300 mt-4 px-4 py-4 rounded-md text-center w-full"
-                // onClick={}
+                onClick={generateRecipe}
               >
                 Generate recipe
               </button>

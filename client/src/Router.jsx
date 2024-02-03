@@ -15,7 +15,7 @@ export const Router = () => {
                 <Route path='/upload' element={<Upload/>}/>
                 <Route path='copyupload' element={<CopyUpload/>}/>
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/parameters" element={<Parameters/>}/>
+                <Route path="/parameters" element={<Parameters ingredients="flour sugar butter eggs milk baking powder vanilla"/>}/>
                 <Route path="/dashboard" element={<Heatmap />} />
             </Routes>
         </>

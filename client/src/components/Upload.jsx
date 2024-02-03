@@ -1,4 +1,7 @@
 import { useRef, useState } from "react";
+import '../css/upload.css'
+import Navbar from "./Navbar";
+
 
 export default function Upload() {
   const [dragActive, setDragActive] = useState(false);
@@ -116,11 +119,12 @@ export default function Upload() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen ">
+    <div className="flex flex-col items-center justify-space r h-screen ">
+    <Navbar/>
       <form
         className={`${
           dragActive ? "bg-blue-400" : "bg-blue-100"
-        } bg-secondary-50 p-4 w-1/2 rounded-lg uploadImg h-screen/2 text-center flex flex-col items-center justify-center`}
+        } bg-secondary-50 p-4  w-1/2 rounded-lg uploadImg h-screen/2 text-center flex flex-col items-center justify-center`}
         onDragEnter={handleDragEnter}
         onSubmit={(e) => e.preventDefault()}
         onDrop={handleDrop}
