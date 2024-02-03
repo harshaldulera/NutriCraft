@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import GoogleLoginButton from '../components/GoogleLoginButton';
-import { UserAuth } from '../contexts/AuthContext';
+import GoogleLoginButton from '../../components/GoogleLoginButton';
+import { UserAuth } from '../../contexts/AuthContext';
 
 const Login = () => {
   const { user } = UserAuth();
