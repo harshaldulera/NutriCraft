@@ -9,10 +9,7 @@ const Home = () => {
   return (
     <>
       <div>
-        <div>
-          <Navbar />
-        </div>
-
+       
         <div className="home">
           <Box
             page="recipe"

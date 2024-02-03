@@ -5,6 +5,7 @@ import { AuthContextProvider } from "./contexts/AuthContext";
 const App = () => {
   return (
     <>
+      
       <AuthContextProvider>
         <BrowserRouter>
           <Router />

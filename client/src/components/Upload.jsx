@@ -3,7 +3,7 @@ import '../css/upload.css'
 import Navbar from "./Navbar";
 
 
-export default function Upload() {
+export default function Upload(props) {
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef(null);
   const videoRef = useRef(null);
@@ -118,10 +118,52 @@ export default function Upload() {
     }
   };
 
+  const handleUploadClick = async () => {
+    console.log("HI1")
+    if (!image) {
+       alert('Please select an image first.');
+       return;
+    }
+    
+    const base64Image = image.toString("base64");
+    //console.log(base64Image)
+    try {
+       const response = await fetch('http://localhost:3000/generate-ingredients', {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({ b64: base64Image }),
+       });
+   
+       if (!response.ok) {
+         throw new Error('Network response was not ok');
+       }
+   
+       const ings = await response.text();
+       console.log(ings)
+       if(ings === " ERROR")
+       {
+        alert('Failed to generate ingredients. Please upload another image.');
+       }
+      //  else
+      //  {
+      //   setIngredients(ings)
+      //  }
+       // Move to next screen bro
+      //  alert(`Ingredients: ${ings}`);
+      props.setIng(ings)
+      props.handleNext()
+    } catch (error) {
+       console.error('Error:', error);
+       alert('Failed to generate ingredients. Please upload another image.');
+    }
+   };
+   
   return (
     <div className="flex flex-col items-center justify-space  h-screen ">
       <div className="flex flex-col items-center justify-space h-screen/2 ">
-      <Navbar/>
+      
       </div>
       {/* <div className="words text-lg">
         <h1>
@@ -131,7 +173,7 @@ export default function Upload() {
           TRY US!!
         </h1>
       </div> */}
-      <div className="text-center flex flex-col items-center justify-center h-screen  w-screen p">
+      <div className="text-center flex flex-col items-center h-screen  w-screen p">
       <form
         className={`${
           dragActive ? "bg-blue-400" : "bg-blue-100"
@@ -148,7 +190,7 @@ export default function Upload() {
           ref={inputRef}
           type="file"
           multiple={true}
-          onChange={handleChange}
+          onChange={handleImageChange}
           accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf"
         />
 
@@ -205,21 +247,20 @@ export default function Upload() {
       {isCapturing && (
         <canvas ref={canvasRef} className="hidden"></canvas>
       )}
-      {image && (
+      {(image || files) && (
         <div className="lg:flex flex-col lg:justify-center items-center">
           <div className="lg:w-1/2">
-            <img
+            {image &&<img
               src={image}
               alt="Uploaded"
               className="mt-4 max-w-full max-h-48 rounded shadow-md"
-            />
+            />}
           </div>
-          <div className="lg:w-1/2">
+          <div >
             
             <button
               id="capture"
               className="text-white px-4 py-2 rounded mt-4"
-            
               onClick={() => {handleUploadClick()}}
             >
               Upload

@@ -3,8 +3,8 @@ import ReactApexCharts from 'react-apexcharts';
 
 const Heatmap = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-  const blocksPerLine = 10;
-  const lines = 3;
+  const blocksPerLine = 5;
+  const lines = 6;
   const calorieTarget = 2000;
 
   useEffect(() => {
@@ -72,18 +72,19 @@ const Heatmap = () => {
       
       return {
         x: `Block ${blockIndex}`,
-        y: calorieIntake >= target ? 1 : -1,
+        y: calorieIntake >= target ? -1 : 1,
       };
     });
   }
   
   return (
-    <div className="chart">
+    <div className="chart" style={{backgroundColor: "white", height:550,
+    width:1000, border: "1px solid black", borderRadius:"1em"}}>
       <ReactApexCharts
         options={options}
         series={series}
         type="heatmap"
-        height={200}
+        height={500}
       />
     </div>
   );

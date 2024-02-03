@@ -5,17 +5,14 @@ const Barchart = () => {
   const [chartState] = useState({
     series: [
       {
-        name: 'Net Profit',
+        name: 'Calorie Intake',
         data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
       },
       {
-        name: 'Revenue',
+        name: 'Calorie burnt',
         data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
       },
-      {
-        name: 'Free Cash Flow',
-        data: [35, 41, 36, 26, 45, 48, 52, 53, 41],
-      },
+     
     ],
     options: {
       chart: {
@@ -42,7 +39,7 @@ const Barchart = () => {
       },
       yaxis: {
         title: {
-          text: '$ (thousands)',
+          text: 'Calories',
         },
       },
       fill: {
@@ -60,12 +57,15 @@ const Barchart = () => {
 
   return (
     <div>
-      <div id="chart">
-        <ReactApexChart options={chartState.options} series={chartState.series} type="bar" height={350} />
+      <div id="chart" style={{backgroundColor: "white", height:350,
+          width:1000, border: "1px solid black", borderRadius:"1em"}}>
+        <ReactApexChart options={chartState.options} series={chartState.series} type="bar" height={350}
+          width={1000}
+         />
       </div>
       <div id="html-dist"></div>
     </div>
   );
 };
 
-export default ApexChart;
+export default Barchart;
