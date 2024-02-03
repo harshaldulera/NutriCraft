@@ -78,8 +78,7 @@ const Heatmap = () => {
   }
   
   return (
-    <div className="chart" style={{backgroundColor: "white", height:550,
-    width:1000, border: "1px solid black", borderRadius:"1em"}}>
+    <div className="bg-white shadow rounded-lg p-4 mb-6">
       <ReactApexCharts
         options={options}
         series={series}
