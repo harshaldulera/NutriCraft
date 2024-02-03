@@ -6,7 +6,7 @@ export default function Signup() {
     <div className="flex flex-col items-center justify-center px-6 pt-20 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900">
     <a href="#" className="flex items-center justify-center mb-8 text-2xl font-semibold lg:mb-10 dark:text-white">
         
-        <span>Study Planner</span>  
+        <span>NutriCraft</span>  
     </a>
      {/* Card  */}
      <div className="w-full max-w-xl sm:p-4 space-y-4 sm:p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800">
@@ -54,9 +54,9 @@ export default function Signup() {
                 </div>
             </div>
             <div className="flex space-x-4">
-  <button type="submit" className="flex-grow px-5 py-3 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create account</button>
-  <GoogleLoginButton/>
-</div>
+            <button type="submit" className="flex-grow px-5 py-3 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create account</button>
+                <GoogleLoginButton/>
+            </div>
 
             <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
                 Already have an account? <a href="/" className="text-primary-700 hover:underline dark:text-primary-500">Login here</a>
