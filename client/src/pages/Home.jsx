@@ -1,4 +1,3 @@
-import React from 'react';
 import Box from '../components/Box';
 import girlicon from '../assets/girlicon.png';
 import girlfood from '../assets/girl_food.jpeg';

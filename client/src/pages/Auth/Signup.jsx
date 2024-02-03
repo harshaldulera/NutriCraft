@@ -1,4 +1,3 @@
-import React from 'react'
 import GoogleLoginButton from '../../components/GoogleLoginButton'
 
 export default function Signup() {
