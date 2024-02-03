@@ -7,7 +7,7 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import TimerIcon from "@mui/icons-material/Timer";
 import Switch from "@mui/material/Switch";
 
-export default function DiscreteSlider() {
+export default function DiscreteSlider(props) {
   const [value, setValue] = React.useState(15);
 
   const handleChange = (event, newValue) => {
@@ -44,14 +44,14 @@ export default function DiscreteSlider() {
   // Generate Recipe
   const generateRecipe = async () => {
     try {
-       const response = await fetch('/generate-recipe', {
+       const response = await fetch('http://localhost:3000/generate-recipe', {
          method: 'POST',
          headers: {
            'Content-Type': 'application/json',
          },
          body: JSON.stringify({
            dietRestrictions: isVeg ? 'veg' : 'non-veg',
-           ingredients: ingredients, // Assuming ingredients is passed as a prop
+           ingredients: props.ingredients, // Assuming ingredients is passed as a prop
            cooking_time: value,
            people: selectedButton,
            difficulty: selectedProficiency.toLowerCase(),
@@ -166,7 +166,7 @@ export default function DiscreteSlider() {
         <div>
         <button
                 className="bg-primary-300 mt-4 px-4 py-4 rounded-md text-center w-full"
-                // onClick={}
+                onClick={generateRecipe}
               >
                 Generate recipe
               </button>
