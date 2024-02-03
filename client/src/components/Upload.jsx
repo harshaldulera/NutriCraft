@@ -190,6 +190,26 @@ export default function Upload() {
       {isCapturing && (
         <canvas ref={canvasRef} className="hidden"></canvas>
       )}
+      {image && (
+        <div className="lg:flex flex-col lg:justify-between">
+          <div className="lg:w-1/2">
+            <img
+              src={image}
+              alt="Uploaded"
+              className="mt-4 max-w-full max-h-48 rounded shadow-md"
+            />
+          </div>
+          <div className="lg:w-1/2">
+            
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+              onClick={() => {handleUploadClick()}}
+            >
+              Upload
+            </button>
+          </div>
+        </div>
+      )}
       </form>
     </div>
   );

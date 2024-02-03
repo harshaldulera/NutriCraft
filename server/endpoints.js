@@ -155,6 +155,37 @@ async function generateRecipe(dietRestrictions, ingredients, cooking_time, peopl
    });
 
 
+
+
+   const generateInfo = async (b64) => {
+    try {
+      // Read image file
+    //   const filePath = "family.jpg";
+    //   const imageFile = await fs.readFile(filePath);
+    //   const imageBase64 = imageFile.toString("base64");
+
+    const imageBase64 = b64
+   
+      const promptConfig = [
+        { text: "Recognise the food item/s in this image. Only the name of the food item do not mention the quantity or anything else" },
+        {
+          inlineData: {
+            mimeType: "image/jpeg",
+            data: imageBase64,
+          },
+        },
+      ];
+   
+      const result = await geminiModel.generateContent({
+        contents: [{ role: "user", parts: promptConfig }],
+      });
+      const response = await result.response;
+      console.log(response.text());
+    } catch (error) {
+      console.log(" response error", error);
+    }
+  };
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
  console.log(`Server listening on port ${port}`);
