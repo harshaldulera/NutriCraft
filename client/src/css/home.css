@@ -42,6 +42,7 @@ body{
 }
   
   .box h2 {
+    margin-top: 2.5rem;
     color: #34693a;
     font-size: 1.5rem;
     margin-bottom: 0.5rem; 
