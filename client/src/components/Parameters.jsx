@@ -73,6 +73,7 @@ export default function DiscreteSlider() {
 
    
   return (
+    <div>
       <div className="bg-secondary-50 max-w-6xl mx-auto rounded-xl flex flex-col items-center justify-center content-center shadow-md my-8 h-screen">
         <h1 className="text-2xl font-bold mb-4">How much time do you have?</h1>
         <div className="w-80 ml-2 order-2 text-right flex flex-end">
@@ -163,6 +164,6 @@ export default function DiscreteSlider() {
           ></Switch>
         </div>
       </div>
-   
+    </div>
   );
 }
