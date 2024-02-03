@@ -229,7 +229,7 @@ export default function Upload(props) {
       <br />
       {isCapturing && (
         <>
-          <video ref={videoRef} autoPlay playsInline className="mt-4 max-w-full max-h-48 rounded shadow-md" />
+          <video ref={videoRef} autoPlay playsInline className="mt-4 min-w-full max-h-48 rounded shadow-md" />
           <br />
           <div className="flex ">
           <button
@@ -248,7 +248,7 @@ export default function Upload(props) {
         </>
       )}
       {isCapturing && (
-        <canvas ref={canvasRef} className="hidden"></canvas>
+        <canvas ref={canvasRef} className="hidden h-15 w-15"></canvas>
       )}
       {(image || files) && (
         <div className="lg:flex flex-col lg:justify-center items-center">
