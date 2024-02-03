@@ -4,14 +4,14 @@ import GoogleLoginButton from '../components/GoogleLoginButton';
 import { UserAuth } from '../contexts/AuthContext';
 
 const Login = () => {
-//   const { user } = UserAuth();
-//   const navigate = useNavigate();
+  const { user } = UserAuth();
+  const navigate = useNavigate();
 
-//   useEffect(() => {
-//     if(user != null) {
-//       navigate('/');
-//     }
-//   }, [user, navigate]);
+  useEffect(() => {
+    if(user != null) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
