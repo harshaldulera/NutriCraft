@@ -62,7 +62,7 @@ const Navbar = () => {
                 ></path>
               </svg>
             </button>
-            <a href="#" className="flex flex-row items-center ml-2 md:mr-24">
+            <a href="/" className="flex flex-row items-center ml-2 md:mr-24">
               <img src={Logo} className="h-8 mr-3" alt="Logo" />
               <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                 NutriCraft
