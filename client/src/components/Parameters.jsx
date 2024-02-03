@@ -1,9 +1,9 @@
+import TimerIcon from "@mui/icons-material/Timer";
+import { Button } from "@mui/material";
 import Slider from "@mui/material/Slider";
+import Switch from "@mui/material/Switch";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
-import { Button } from "@mui/material";
-import TimerIcon from "@mui/icons-material/Timer";
-import Switch from "@mui/material/Switch";
 
 export default function Parameters(props) {
   const [value, setValue] = React.useState(15);
@@ -204,12 +204,12 @@ return (
       <div className="pb-24">
         <div className="mx-auto space-y-6 md:space-x-6 md:space-y-0 max-w-2xl">
           <div>
-            <form className="w-full ">
+            <form className="w-full p--3 ">
               <div class="space-y-4">
                 <h1 className="text-xl font-bold mb-5">
                   How much time do you have?
                 </h1>
-                <div className="w-80 flex justify-end ">
+                <div className="w-90 flex justify-end ">
                   <Slider
                     aria-label="Temperature"
                     value={value}
@@ -258,10 +258,10 @@ return (
                   <h2 className="text-xl font-bold mb-5">
                     Are you a good chef?
                   </h2>
-                  <div className="flex flex-row">
-                    <div className="relative">
+                  <div className="flex flex-row w-full">
+                    <div className="relative w-full">
                       <Button
-                        sx={{ backgroundColor: "#4d730f", color: "black" }}
+                        sx={{ backgroundColor: "#4d730f", color: "black", width: "100%"}}
                         className="bg-primary-300 px-4 py-2 rounded-md text-center w-full"
                         onClick={handleDropdownToggle}
                       >
@@ -312,15 +312,15 @@ return (
                   ></Switch>
                   <span className="text-xl font-bold mb-4">Non-Veg </span>
                 </div>
-                <div className="pt-6">
+                <div className="pt-6 w-full">
                   <Button
                     size="large"
                     onClick={generateRecipe}
                     sx={{
                       backgroundColor: "#4d730f",
                       color: "black",
-                      width: 8 / 9,
-                      height: 4 / 5,
+                      width: 1,
+                      height: 1,
                     }}
                   >
                     Generate Recipe!
