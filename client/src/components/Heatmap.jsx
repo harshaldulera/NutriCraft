@@ -84,7 +84,7 @@ const Heatmap = () => {
         options={options}
         series={series}
         type="heatmap"
-        height={500}
+        height={250}
       />
     </div>
   );
