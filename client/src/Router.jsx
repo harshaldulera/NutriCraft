@@ -8,7 +8,7 @@ import CopyUpload from "./components/CopyUpload";
 import Recipe from "./components/Recipe";
 import Heatmap from "./components/Heatmap";
 import Ingredients from "./pages/Ingredients";
-import Piechart from "./components/Piechart";
+
 import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
 import Stats from "./pages/Stats";
