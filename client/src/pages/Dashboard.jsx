@@ -8,7 +8,7 @@ const Dashboard = () => {
         <div style={{paddingTop:"5%"}}>
         <Heatmap />
         <Piechart/>
-            <Barchart/>
+        <Barchart/>
         </div>
           
             

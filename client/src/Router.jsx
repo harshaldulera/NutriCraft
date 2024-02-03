@@ -7,11 +7,12 @@ import Parameters  from "./components/Parameters";
 import CopyUpload from "./components/CopyUpload";
 import Recipe from "./components/Recipe";
 import Heatmap from "./components/Heatmap";
-
 import Ingredients from "./pages/Ingredients";
 import Piechart from "./components/Piechart";
 import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
+import Stats from "./pages/Stats";
+
 export const Router = () => {
     return (
         <>
@@ -27,7 +28,7 @@ export const Router = () => {
                 <Route path="/parameters" element={<Parameters ingredients="flour sugar butter eggs milk baking powder vanilla"/>}/>
                 <Route path="/recipe" element={<Recipe />} />
                 <Route path="/stats" element={<Stats />} />
-                <Route path="/dashboard" element={<Barchart />} />  
+                {/* <Route path="/dashboard" element={<Barchart />} />   */}
             </Routes>
         </>
     );

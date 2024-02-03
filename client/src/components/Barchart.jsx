@@ -1,5 +1,5 @@
-// import React, { useState } from 'react';
-// import ReactApexChart from 'react-apexcharts';
+import React, { useState } from 'react';
+import ReactApexChart from 'react-apexcharts';
 
 const Barchart = () => {
   const [chartState] = useState({
