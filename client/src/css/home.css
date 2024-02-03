@@ -7,6 +7,7 @@ body{
 /* rgb(62, 117, 62); */
 
   .home {
+    padding-top: 5rem;
     display: flex;
     flex-wrap: wrap; 
     justify-content: space-around;
@@ -30,6 +31,7 @@ body{
 
 
 .box-image {
+    position: relative;
     width: 250px; 
     height: 200px; 
     margin-bottom: 1.5rem; 
@@ -62,7 +64,7 @@ body{
   
   @media screen and (max-width: 48rem) {
     .box {
-      width: 40rem; /* Adjusted width for smaller screens using rem units */
+        width: calc(50% - 1.5rem);
     }
   }
   
