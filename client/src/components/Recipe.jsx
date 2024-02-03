@@ -15,7 +15,7 @@ const Recipe = () => {
       };
     
     return(
-        <div className="bg-secondary-50 relative mx-auto rounded-lg flex mt-5 min-h-[95vh] max-w-6xl flex-col items-center">
+        <div className="bg-secondary-50 relative mx-auto rounded-lg flex  min-h-[95vh] max-w-6xl flex-col items-center">
             <main className="flex-1">
                 <div className="">
                     <section className="mx-auto flex max-w-5xl flex-col items-center gap-2 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20">

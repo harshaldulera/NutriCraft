@@ -72,8 +72,8 @@ export default function DiscreteSlider(props) {
    
   return (
     <div>
-      <div className="bg-primary-100 mt-15 pt-10 max-w-4xl mx-auto rounded-xl flex flex-col items-center  content-center gap-10 shadow-md my-8 h-screen">
-        <h1 className="text-xl font-bold mb-4">How much time do you have?</h1>
+      <div className="bg-primary-100  max-w-4xl mx-auto rounded-xl flex flex-col items-center  content-center gap-10 shadow-md h-screen">
+        <h1 className="text-xl font-bold my-4">How much time do you have?</h1>
         <div className="w-80 flex justify-end">
           <Slider
             aria-label="Temperature"
