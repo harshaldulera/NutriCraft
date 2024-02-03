@@ -111,6 +111,32 @@ export default function Upload() {
             </div>
           ))}
         </div>
+        <button
+        onClick={handleCaptureClick}
+        disabled={isCapturing}
+        className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+      >
+        Capture Image from Camera
+      </button>
+      <br />
+      {isCapturing && (
+        <>
+          <video ref={videoRef} autoPlay playsInline className="mt-4 max-w-full max-h-48 rounded shadow-md" />
+          <br />
+          <button
+            onClick={handleCaptureImage}
+            className="bg-green-500 text-white px-4 py-2 rounded mt-2"
+          >
+            Capture Image
+          </button>
+          <button
+            onClick={handleStopCapture}
+            className="bg-red-500 text-white px-4 py-2 rounded mt-2 ml-2"
+          >
+            Stop Capture
+          </button>
+        </>
+      )}
       </form>
     </div>
   );
