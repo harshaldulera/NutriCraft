@@ -6,7 +6,7 @@ import { UserAuth } from "../contexts/AuthContext";
 const Navbar = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { user } = UserAuth();
+  const { user, logOut } = UserAuth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +29,7 @@ const Navbar = () => {
   };
 
   const handleSignOut = () => {
-    // Add signout logic here
+    logOut();
   };
 
   return (
@@ -59,14 +59,14 @@ const Navbar = () => {
               />
             </button>
             {isDropdownOpen && (
-              <ul className="absolute right-0 mt-2 space-y-2 bg-white border dark:bg-gray-800 dark:border-gray-700 ring-1 ring-black ring-opacity-5 shadow-lg min-w-max">
+              <ul className="absolute right-0 mt-2 space-y-2 bg-white border dark:bg-gray-800 dark:border-gray-700 ring-1 ring-black ring-opacity-5 shadow-lg min-w-max mt-40">
                 <li>
                   <a
                     href="/profile"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem"
                   >
-                    User Profile
+                    Profile
                   </a>
                 </li>
                 <li>
