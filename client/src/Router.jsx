@@ -12,8 +12,7 @@ import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
-import Ingredients from "./pages/Ingredients";
-import Meal from "./pages/Meal";
+
 import Profile from "./pages/Profile";
 import Recs from "./pages/Recs";
 import Stats from "./pages/Stats";
