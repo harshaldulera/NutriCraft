@@ -17,10 +17,8 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'transparent',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  paddingLeft: '32%',
+  p: 2,
+  pl: 20,
 };
 
 const steps = ['Take a Photo', 'Count your Calories!'];

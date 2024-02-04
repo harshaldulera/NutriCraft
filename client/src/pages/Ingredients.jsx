@@ -17,11 +17,9 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-  paddingLeft: "32%",
+  bgcolor: 'transparent',
+  p: 2,
+  pl: 20,
 };
 
 const steps = ["Take a Photo", "Choose your Preferences", "Get the Recipes"];

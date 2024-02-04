@@ -40,6 +40,15 @@ function SwipeableEdgeDrawer(props) {
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
+    let rec = props.ing
+    console.log(rec)
+    
+    let resultString = rec
+    if (rec.startsWith(' ```json') && rec.endsWith('```')) {
+        resultString = rec.substring(' ```json'.length, rec.length - '```'.length);}
+    if (rec.startsWith('```json') && rec.endsWith('```')) {
+        resultString = rec.substring('```json'.length, rec.length - '```'.length);}
+    let recipe = JSON.parse(resultString)
 
   // This is used only for the example
   const container = window !== undefined ? () => window().document.body : undefined;
@@ -60,6 +69,7 @@ function SwipeableEdgeDrawer(props) {
         {/* //add image here */}
         <img src={props.image} style={{"height":"150px", "margin": "auto", "marginTop":"2em"}}/>
         <h1>{props.ing}</h1>
+        <h1>{recipe.name}</h1>
       </div>
       <SwipeableDrawer
         container={container}
@@ -97,6 +107,15 @@ function SwipeableEdgeDrawer(props) {
           }}
           className='bg-primary-100'
         >
+          Per 100 grams:
+          <ul>
+          <li>Calories: {recipe.calories}</li>
+          <li>Protein: {recipe.protein} g</li>
+          <li>Carbs: {recipe.carbs} g</li>
+          <li>Sugars: {recipe.sugars} g</li>
+          <li>Fats: {recipe.fats} g</li>
+          <li>Sodium: {recipe.sodium} mg</li>
+          </ul>
           
         </StyledBox>
       </SwipeableDrawer>

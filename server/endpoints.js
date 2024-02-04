@@ -167,7 +167,22 @@ async function generateRecipe(dietRestrictions, ingredients, cooking_time, peopl
     const imageBase64 = b64
    
       const promptConfig = [
-        { text: "Recognise the food item/s in this image. Only the name of the food item do not mention the quantity or anything else" },
+        { text: `Recognise the food item/s in this image. 
+          Give in json format the name the number of calories, protein, carbs, sugars, fats, sodium per 100 grams. 
+          Respond in a valid json string with no extra information or formatting
+
+          JSON format:
+          {
+            "name": "info",
+            "calories": "info",
+            "protein": "info",
+            "carbs": "info",
+            "sugars": "info",
+            "fats": "info",
+            "sodium": "info",
+          }
+          
+          ` },
         {
           inlineData: {
             mimeType: "image/jpeg",
