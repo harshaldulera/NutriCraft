@@ -199,7 +199,7 @@ export default function Upload(props) {
       <form
         className={`${
           dragActive ? "bg-blue-400" : "bg-blue-100"
-        } bg-primary-100 p-7 h-100 w-3/5 rounded-lg uploadImg form-upload text-center flex flex-col items-center justify-center`}
+        } bg-primary-100 h-100 w-3/5 rounded-lg uploadImg form-upload text-center flex flex-col items-center justify-center`}
         onDragEnter={handleDragEnter}
         onSubmit={(e) => e.preventDefault()}
         onDrop={handleDrop}
