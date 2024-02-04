@@ -1,19 +1,19 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Auth/Login";
-import Upload from "./components/Upload";
-import Signup from "./pages/Auth/Signup";
-import Parameters  from "./components/Parameters";
 import CopyUpload from "./components/CopyUpload";
-import Recipe from "./components/Recipe";
-import Meal from "./pages/Meal";import Heatmap from "./components/Heatmap";
-import Ingredients from "./pages/Ingredients";
-import DrawerComponent from "./components/TemporaryDrawer";
-import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
-import Stats from "./pages/Stats";
+import Parameters from "./components/Parameters";
+import Recipe from "./components/Recipe";
+import DrawerComponent from "./components/TemporaryDrawer";
+import Upload from "./components/Upload";
+import Login from "./pages/Auth/Login";
+import Signup from "./pages/Auth/Signup";
+import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
+import Ingredients from "./pages/Ingredients";
+import Meal from "./pages/Meal";
 import Profile from "./pages/Profile";
-import Tracker from "./pages/Tracker";
+import Recs from "./pages/Recs";
+import Stats from "./pages/Stats";
 
 export const Router = () => {
     return (
@@ -37,6 +37,7 @@ export const Router = () => {
                 <Route path='/meal' element={<Meal/>}/>
                 <Route path="/drawer" element={<DrawerComponent/>}/>
                 <Route path="/tracker" element={<Tracker />} /> 
+                <Route path="/rec" element={<Recs/>}/>
             </Routes>
         </>
     );
