@@ -79,7 +79,7 @@ export default function Upload(props) {
        const devices = await navigator.mediaDevices.enumerateDevices();
        const videoInputDevices = devices.filter(device => device.kind === 'videoinput');
    
-       if (videoInputDevices.length > 1) {
+       if (videoInputDevices.length > 0) {
          // If there are multiple video input devices, prefer the rear camera
          constraints.video = { facingMode: 'environment' };
        } else {
