@@ -1,0 +1,14 @@
+{
+    "builds": [
+        {
+            "src": "endpoints.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/endpoints.js"
+        }
+    ]
+}
