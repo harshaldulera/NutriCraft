@@ -12,7 +12,7 @@ export default function Signup() {
           <span>NutriCraft</span>
         </a>
         {/* Card  */}
-        <div className="w-full max-w-xl sm:p-4 space-y-4 sm:p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <div className="w-full max-w-xl sm:p-4 space-y-4  bg-white rounded-lg shadow-lg dark:bg-gray-800">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
             Create a Free Account
           </h2>
