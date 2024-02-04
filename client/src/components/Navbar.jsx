@@ -6,7 +6,7 @@ import { UserAuth } from "../contexts/AuthContext";
 const Navbar = () => {
   const [userProfile, setUserProfile] = useState(null);
   const { user } = UserAuth();
-
+  
   useEffect(() => {
     const googleSignIn = async () => {
       if (!user) return;

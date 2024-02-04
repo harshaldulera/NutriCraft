@@ -7,7 +7,10 @@ import { grey } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import * as React from 'react';
-
+import { getFirestore, increment, doc, updateDoc, collection, getDoc, setDoc } from 'firebase/firestore';
+import { UserAuth } from '../contexts/AuthContext'
+import { Button } from '@mui/material';
+import { db } from '../config/firebase';
 
 const drawerBleeding = 56;
 
@@ -34,10 +37,45 @@ const Puller = styled(Box)(({ theme }) => ({
 function SwipeableEdgeDrawer(props) {
   const { window } = props;
   const [open, setOpen] = React.useState(false);
+  const { user } = UserAuth();
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
+
+  const updateTotalCalories = async (userId, newCalories, protein, sugar, carbs, fat, sodium) => {
+    try {
+       const firestore = getFirestore();
+       const userDocRef = doc(firestore, 'users', userId);
+       // Check if the calories field exists and update accordingly
+       const userSnapshot = await getDoc(userDocRef);
+       if (userSnapshot.exists()) {
+         const userData = userSnapshot.data();
+         
+         await setDoc(userDocRef,  {totalCalories: (userData.totalCalories || 0) + newCalories,
+          totalProtein: (userData.totalProtein || 0) + protein,
+          totalCarbs: (userData.totalCarbs || 0) + carbs,
+          totalSugars: (userData.totalSugars || 0) + sugar,
+          totalFats: (userData.totalFats || 0) + fat,
+          totalSodium: (userData.totalSodium || 0) + sodium,}, { merge: true });
+       } else {
+         // If the document does not exist, create it with the new calories value
+         await setDoc(userDocRef, { totalCalories: newCalories }, { merge: true });
+       }
+       console.log('Total calories updated successfully');
+    } catch (error) {
+       console.error('Error updating total calories in Firestore:', error);
+    }
+   };
+
+  React.useEffect(() => {
+    if (open && user) {
+      const caloriesAsNumber = parseFloat(props.ing.calories);
+      updateTotalCalories(user.uid, caloriesAsNumber);
+    }
+ }, [open, user, props.ing]);
+
+
     let rec = props.ing
     console.log(rec)
     
@@ -63,9 +101,10 @@ function SwipeableEdgeDrawer(props) {
         }}
       />
       
-      <div>
+      <div className='flex flex-col align-center justify-center'>
         {/* //add image here */}
         <img src={props.image} style={{"height":"150px", "margin": "auto", "marginTop":"2em"}}/>
+        <Button onClick={()=>updateTotalCalories(user.uid, parseFloat(recipe.calories), parseFloat(recipe.protein), parseFloat(recipe.sugar), parseFloat(recipe.carbs), parseFloat(recipe.fat), parseFloat(recipe.sodium))}>Eat</Button>
         
       </div>
       <SwipeableDrawer
