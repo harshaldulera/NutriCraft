@@ -1,29 +1,28 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Upload from '../components/Upload';
-import Parameters from '../components/Parameters';
-import Recipe from '../components/Recipe';
-import Modal from '@mui/material/Modal';
-import { Hourglass } from 'react-loader-spinner'
-
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Upload from "../components/Upload";
+import Parameters from "../components/Parameters";
+import Recipe from "../components/Recipe";
+import Modal from "@mui/material/Modal";
+import { Hourglass } from "react-loader-spinner";
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: 'transparent',
   p: 2,
   pl: 20,
 };
 
-const steps = ['Take a Photo', 'Choose your Preferences', 'Get the Recipes'];
+const steps = ["Take a Photo", "Choose your Preferences", "Get the Recipes"];
 
 export default function Ingredients() {
   const [open, setOpen] = React.useState(false);
@@ -32,7 +31,7 @@ export default function Ingredients() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [ing, setIng] = React.useState();
   const [skipped, setSkipped] = React.useState(new Set());
-  const [recipe, setRecipe] = React.useState()
+  const [recipe, setRecipe] = React.useState();
 
   const isStepOptional = (step) => {
     return false;
@@ -78,60 +77,66 @@ export default function Ingredients() {
 
   return (
     <>
-    <Modal
+      <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-            <Hourglass
-    visible={true}
-    height="80"
-    width="80"
-    ariaLabel="hourglass-loading"
-    wrapperStyle={{}}
-    wrapperClass=""
-    colors={['#306cce', '#72a1ed']}
-    />
+          <Hourglass
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="hourglass-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            colors={["#306cce", "#72a1ed"]}
+          />
         </Box>
       </Modal>
-    <Box sx={{ width: '100%', pt:10}}>
-      <Stepper activeStep={activeStep}>
-        {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography variant="caption">Optional</Typography>
+      <Box sx={{ width: "100%", pt: 10 }}>
+        <Stepper activeStep={activeStep}>
+          {steps.map((label, index) => {
+            const stepProps = {};
+            const labelProps = {};
+            if (isStepOptional(index)) {
+              labelProps.optional = (
+                <Typography variant="caption">Optional</Typography>
+              );
+            }
+            if (isStepSkipped(index)) {
+              stepProps.completed = false;
+            }
+            return (
+              <Step key={label} {...stepProps}>
+                <StepLabel {...labelProps}>{label}</StepLabel>
+              </Step>
             );
-          }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
-     
+          })}
+        </Stepper>
 
-       {activeStep === 0 && (
-        <div><Upload setIng={setIng} handleNext={handleNext} setOpen={setOpen}/></div>
-        
-      )}
-       {activeStep === 1 && (
-        <div><Parameters ing={ing} handleNext={handleNext} setRecipe={setRecipe} setOpen={setOpen}/></div>
-        
-      )}
-       {activeStep === 2 && (
-        <div><Recipe recipe={recipe} handleNext={handleNext} setOpen={setOpen}/></div>
-        
-      )}
-      
-    </Box>
+        {activeStep === 0 && (
+          <div>
+            <Upload setIng={setIng} handleNext={handleNext} setOpen={setOpen} />
+          </div>
+        )}
+        {activeStep === 1 && (
+          <div>
+            <Parameters
+              ing={ing}
+              handleNext={handleNext}
+              setRecipe={setRecipe}
+              setOpen={setOpen}
+            />
+          </div>
+        )}
+        {activeStep === 2 && (
+          <div>
+            <Recipe recipe={recipe} handleNext={handleNext} setOpen={setOpen} />
+          </div>
+        )}
+      </Box>
     </>
   );
 }

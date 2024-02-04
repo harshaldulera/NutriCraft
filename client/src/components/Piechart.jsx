@@ -9,7 +9,7 @@ const ApexChart = () => {
         width: 380,
         type: 'pie',
       },
-      labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+      labels: ['Calories', 'Protein', 'Carbs', 'Sugar', 'Fats'],
       responsive: [
         {
           breakpoint: 480,
