@@ -1,37 +1,39 @@
 import React, { useState } from 'react';
 import '../css/recs.css';
-export default function Recs() {
 
-    const [messages, setMessages] = useState([]);
-    const [input, setInput] = useState('');
-  
-    const sendMessage = () => {
-      if (input.trim() === '') return;
-  
-      const newMessages = [...messages, { text: input, sender: 'user' }];
-      setMessages(newMessages);
+const Chatbot = ()=> {
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (input.trim() !== '') {
+      setMessages([...messages, { user: true, message: input }]);
       setInput('');
     }
+  };
+
   return (
-    <div className="App">
-    <div className="chat-container">
-      <div className="chat-messages">
+    <div className="chatbot flex flex-col h-screen w-screen">
+      <div className="chat-history flex-1 overflow-y-scroll p-2">
         {messages.map((message, index) => (
-          <div key={index} className={message.sender === 'user' ? 'user-message' : 'bot-message'}>
-            {message.text}
+          <div key={index} className={message.user ? 'user-message' : 'ai-message'}>
+            {message.message}
           </div>
         ))}
       </div>
-      <div className="input-container">
+      <form onSubmit={handleSubmit} className="flex p-2">
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type your message..."
+          className="flex-1"
         />
-        <button onClick={sendMessage}>Send</button>
-      </div>
+        <button type="submit">Send</button>
+      </form>
     </div>
-  </div>
-);
-}
+  );
+};
+
+export default Chatbot;
