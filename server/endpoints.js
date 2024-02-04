@@ -181,6 +181,7 @@ async function generateRecipe(dietRestrictions, ingredients, cooking_time, peopl
       });
       const response = await result.response;
       console.log(response.text());
+      return response.text()
     } catch (error) {
       console.log(" response error", error);
     }

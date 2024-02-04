@@ -123,7 +123,7 @@ export default function Upload(props) {
        alert('Please select an image first.');
        return;
     }
-    props.setImage(image)
+    setImage(image)
     
     const base64Image = image.toString("base64");
     //console.log(base64Image)

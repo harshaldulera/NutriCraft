@@ -16,14 +16,14 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
+  bgcolor: 'transparent',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
   paddingLeft: '32%',
 };
 
-const steps = ['Take a Photo', 'Choose your Preferences', 'Get the Recipes'];
+const steps = ['Take a Photo', 'Count your Calories!'];
 
 export default function Endproduct() {
   const [open, setOpen] = React.useState(false);
@@ -127,10 +127,7 @@ export default function Endproduct() {
         <div><SwipeableEdgeDrawer ing={ing} handleNext={handleNext} setRecipe={setRecipe} setOpen={setOpen} image = {image} setImage={setImage}/></div>
         
       )}
-       {activeStep === 2 && (
-        <div><Recipe recipe={recipe} handleNext={handleNext} setOpen={setOpen}/></div>
-        
-      )}
+       
       
     </Box>
     </>

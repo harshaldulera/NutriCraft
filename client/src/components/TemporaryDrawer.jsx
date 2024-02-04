@@ -9,7 +9,7 @@ import { grey } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import * as React from 'react';
-import Upload from './Upload';
+
 
 const drawerBleeding = 56;
 
@@ -55,14 +55,11 @@ function SwipeableEdgeDrawer(props) {
           },
         }}
       />
-      <Box sx={{ textAlign: 'center', pt: 1, paddingTop: 15, height:30, width: 35}}>
-        <Button onClick={toggleDrawer(true)}>Open</Button>
-      </Box>
+      
       <div>
         {/* //add image here */}
-        <Upload
-        image={props.image}
-        />
+        <img src={props.image} style={{"height":"150px", "margin": "auto", "marginTop":"2em"}}/>
+        <h1>{props.ing}</h1>
       </div>
       <SwipeableDrawer
         container={container}
@@ -88,7 +85,7 @@ function SwipeableEdgeDrawer(props) {
           }}
         >
           <Puller />
-          <Typography sx={{ p: 2, color: 'text.secondary' }}>51 results</Typography>
+          <Typography sx={{ p: 2, color: 'text.secondary' }}>Pull up for caloric info!</Typography>
         </StyledBox>
         <StyledBox
           sx={{
@@ -96,9 +93,11 @@ function SwipeableEdgeDrawer(props) {
             pb: 2,
             height: '100%',
             overflow: 'auto',
+            backgroundColor: '#FFFFCC'
           }}
+          className='bg-primary-100'
         >
-          <Skeleton variant="rectangular" height="100%" /> <button sx={{ p: 2, color: 'text.secondary' }}>eat</button>
+          
         </StyledBox>
       </SwipeableDrawer>
     </Root>
