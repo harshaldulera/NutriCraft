@@ -174,7 +174,11 @@ export default function Upload(props) {
           TRY US!!
         </h1>
       </div> */}
-      <div className="text-center mt-5 flex flex-col items-center h-screen  w-screen p">
+      
+      <h1 class="text-center pt-8 md:p-8 text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
+          Upload the image of your food
+      </h1>
+      <div className="text-center flex flex-col items-center h-screen  w-screen p">
       <form
         className={`${
           dragActive ? "bg-blue-400" : "bg-blue-100"
