@@ -1,8 +1,6 @@
 import { Global } from '@emotion/react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import Skeleton from '@mui/material/Skeleton';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Typography from '@mui/material/Typography';
 import { grey } from '@mui/material/colors';
@@ -68,8 +66,7 @@ function SwipeableEdgeDrawer(props) {
       <div>
         {/* //add image here */}
         <img src={props.image} style={{"height":"150px", "margin": "auto", "marginTop":"2em"}}/>
-        <h1>{props.ing}</h1>
-        <h1>{recipe.name}</h1>
+        
       </div>
       <SwipeableDrawer
         container={container}
@@ -105,11 +102,12 @@ function SwipeableEdgeDrawer(props) {
             overflow: 'auto',
             backgroundColor: '#FFFFCC'
           }}
-          className='bg-primary-100'
+          className='bg-primary-100 flex flex-col justify-center contents-center items-center'
         >
-          Per 100 grams:
+        <h1 className='font-bold underline-offset-4'>Per 100 grams:</h1>
+          
           <ul>
-          <li>Calories: {recipe.calories}</li>
+          <li >Calories: {recipe.calories}</li>
           <li>Protein: {recipe.protein} g</li>
           <li>Carbs: {recipe.carbs} g</li>
           <li>Sugars: {recipe.sugars} g</li>

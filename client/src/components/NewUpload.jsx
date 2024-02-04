@@ -144,7 +144,7 @@ export default function NewUpload(props) {
        console.log(ings)
        if(ings === " ERROR")
        {
-        alert('Failed to generate ingredients. Please upload another image.');
+        alert('Not a meal. Please upload another image.');
        }
         else{
             props.setIng(ings)
