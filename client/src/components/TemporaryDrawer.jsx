@@ -7,8 +7,7 @@ import { grey } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import * as React from 'react';
-
-
+import '../css/drawer.css';
 const drawerBleeding = 56;
 
 const Root = styled('div')(({ theme }) => ({
@@ -63,9 +62,9 @@ function SwipeableEdgeDrawer(props) {
         }}
       />
       
-      <div>
+      <div className='image-show'>
         {/* //add image here */}
-        <img src={props.image} style={{"height":"150px", "margin": "auto", "marginTop":"2em"}}/>
+        <img src={props.image} style={{"height":"350px", "margin": "auto", "marginTop":"2em"}}/>
         
       </div>
       <SwipeableDrawer
