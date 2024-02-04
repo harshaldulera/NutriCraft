@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactApexCharts from 'react-apexcharts';
+import '../css/stats.css';
 
 const Heatmap = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
@@ -84,6 +85,7 @@ const Heatmap = () => {
         series={series}
         type="heatmap"
         height={250}
+        
       />
     </div>
   );

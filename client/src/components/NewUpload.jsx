@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import '../css/upload.css';
 
 
-export default function Upload(props) {
+export default function NewUpload(props) {
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef(null);
   const videoRef = useRef(null);
@@ -88,7 +88,7 @@ export default function Upload(props) {
       const context = canvasRef.current.getContext('2d');
       context.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height);
       const imageDataURL = canvasRef.current.toDataURL('image/png');
-      setImage(imageDataURL);
+      props.setImage(imageDataURL);
       setIsCapturing(false);
     }
   };
@@ -104,14 +104,14 @@ export default function Upload(props) {
       }
     }
   }
-  const [image, setImage] = useState(null);
+//   const [image, setImage] = useState(null);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImage(reader.result);
+        props.setImage(reader.result);
       };
       reader.readAsDataURL(file);
     }
@@ -119,16 +119,16 @@ export default function Upload(props) {
 
   const handleUploadClick = async () => {
     props.setOpen(true)
-    if (!image) {
+    if (!props.image) {
        alert('Please select an image first.');
        return;
     }
-    setImage(image)
+    props.setImage(props.image)
     
-    const base64Image = image.toString("base64");
+    const base64Image = props.image.toString("base64");
     //console.log(base64Image)
     try {
-       const response = await fetch('http://localhost:3000/generate-ingredients', {
+       const response = await fetch('http://localhost:3000/generate-info', {
          method: 'POST',
          headers: {
            'Content-Type': 'application/json',
@@ -146,15 +146,17 @@ export default function Upload(props) {
        {
         alert('Failed to generate ingredients. Please upload another image.');
        }
-      //  else
+        else{
+            props.setIng(ings)
+            props.setOpen(false)
+            props.handleNext()
+        }
       //  {
       //   setIngredients(ings)
       //  }
        // Move to next screen bro
       //  alert(`Ingredients: ${ings}`);
-      props.setIng(ings)
-      props.setOpen(false)
-      props.handleNext()
+      
     } catch (error) {
        console.error('Error:', error);
        alert('Failed to generate ingredients. Please upload another image.');
@@ -178,7 +180,7 @@ export default function Upload(props) {
       <form
         className={`${
           dragActive ? "bg-blue-400" : "bg-blue-100"
-        } bg-primary-100 p-7 h-100 w-3/5 rounded-lg uploadImg form-upload text-center flex flex-col items-center justify-center`}
+        } bg-primary-100 p-7 h-100 w-3/5 rounded-lg uploadImg  text-center flex flex-col items-center justify-center`}
         onDragEnter={handleDragEnter}
         onSubmit={(e) => e.preventDefault()}
         onDrop={handleDrop}
@@ -192,7 +194,7 @@ export default function Upload(props) {
           type="file"
           multiple={true}
           onChange={handleImageChange}
-          accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf"
+          accept=".jpg"
         />
 
         <p>
@@ -229,7 +231,7 @@ export default function Upload(props) {
       <br />
       {isCapturing && (
         <>
-          <video ref={videoRef} autoPlay playsInline className="mt-4 min-w-full max-h-48 rounded shadow-md" />
+          <video ref={videoRef} autoPlay playsInline className="mt-4 max-w-full max-h-48 rounded shadow-md" />
           <br />
           <div className="flex ">
           <button
@@ -248,13 +250,13 @@ export default function Upload(props) {
         </>
       )}
       {isCapturing && (
-        <canvas ref={canvasRef} className="hidden h-15 w-15"></canvas>
+        <canvas ref={canvasRef} className="hidden"></canvas>
       )}
-      {(image || files) && (
+      {(props.image || files) && (
         <div className="lg:flex flex-col lg:justify-center items-center">
           <div className="lg:w-1/2">
-            {image &&<img
-              src={image}
+            {props.image &&<img
+              src={props.image}
               alt="Uploaded"
               className="mt-4 max-w-full max-h-48 rounded shadow-md"
             />}

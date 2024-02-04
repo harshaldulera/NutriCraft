@@ -20,7 +20,7 @@ body{
     
 }
 
-form{
+.form-upload{
     width: 20rem;
     object-fit: cover;
 }
@@ -44,6 +44,10 @@ form{
         align-items: center;
         padding-top: 25%;
     }
+    .form-upload{
+        width: 90% !important;
+        margin-top: 15% !important;
+    }
    
   
 }
@@ -56,8 +60,8 @@ form{
 
 
 
-    form{
+    .form-upload {
         min-height: 40vh;
-        margin-top: 5%;
-        padding: 5%;
+        margin-top: 8%;
+        
     }

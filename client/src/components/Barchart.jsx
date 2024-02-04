@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-
+import '../css/barchart.css';
 const Barchart = () => {
   const [chartState] = useState({
     series: [
@@ -57,9 +57,9 @@ const Barchart = () => {
 
   return (
     <div>
-      <div className="bg-white shadow rounded-lg p-4 mb-6">
-        <ReactApexChart options={chartState.options} series={chartState.series} type="bar" height={350}
-          width={1000}
+      <div className="bg-white shadow rounded-lg p-4 mb-6 border-2 border-black">
+        <ReactApexChart className="w-100 barchart"options={chartState.options} series={chartState.series} type="bar" height={350}
+          width={"300%"}
          />
       </div>
       <div id="html-dist"></div>
