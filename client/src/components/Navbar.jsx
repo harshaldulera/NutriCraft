@@ -63,7 +63,7 @@ const Navbar = () => {
                 <li>
                   <a
                     href="/profile"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                    className="block px-4 py-2 text-sm text-primary-700 hover:bg-primary-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem"
                   >
                     Profile
@@ -72,7 +72,7 @@ const Navbar = () => {
                 <li>
                   <button
                     onClick={handleSignOut}
-                    className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                    className="block w-full px-4 py-2 text-sm text-primary-700 hover:bg-primary-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem"
                   >
                     Sign Out
