@@ -233,11 +233,12 @@ return (
                   <h1 className="text-xl font-bold mb-5">
                     How many people do you have to serve?
                   </h1>
-                  <div className="buttons flex items-center justify-between text-xl font-bold">
+                  <div className="buttons flex items-center justify-between text-xl font-bold ">
                     {[2, 4, 6].map((buttonValue) => (
                       <Button
                         key={buttonValue}
-                        sx={{ backgroundColor: "#4d730f", color: "black" }}
+                        className="bg-primary-300 px-4 py-2 rounded-md text-center hover:text-primary-700 w-full"
+                        sx={{ backgroundColor: "#4d730f", color: "white" }}
                         style={{
                           border:
                             selectedButton === buttonValue
@@ -261,26 +262,26 @@ return (
                   <div className="flex flex-row w-full">
                     <div className="relative w-full">
                       <Button
-                        sx={{ backgroundColor: "#4d730f", color: "black", width: "100%"}}
-                        className="bg-primary-300 px-4 py-2 rounded-md text-center w-full"
+                        sx={{ backgroundColor: "#4d730f", color: "white", width: "100%"}}
+                        className="bg-primary-300 px-4 py-2 rounded-md text-center hover:text-primary-700 w-full"
                         onClick={handleDropdownToggle}
                       >
                         {selectedProficiency}
                       </Button>
                       <div
-                        className={` absolute z-10 top-full left-0 w-full bg-white rounded-md shadow-lg ${
+                        className={` absolute z-10 top-full bg-white left-0 w-full rounded-md shadow-lg ${
                           isOpen ? "block" : "hidden"
                         }`}
                       >
                         <ul className="py-1 text-base w-full">
                           <li
-                            className="px-4 hover:bg-gray-100 cursor-pointer w-full"
+                            className="px-4 hover:bg-primary-100 cursor-pointer w-full"
                             onClick={() => handleProficiencySelect("Novice")}
                           >
                             Novice
                           </li>
                           <li
-                            className="px-4 hover:bg-gray-100 cursor-pointer w-full"
+                            className="px-4 hover:bg-primary-100 cursor-pointer w-full"
                             onClick={() =>
                               handleProficiencySelect("Intermediate")
                             }
@@ -288,7 +289,7 @@ return (
                             Intermediate
                           </li>
                           <li
-                            className="px-4 hover:bg-gray-100 cursor-pointer"
+                            className="px-4 hover:bg-primary-100 cursor-pointer"
                             onClick={() => handleProficiencySelect("Expert")}
                           >
                             Expert
@@ -306,7 +307,7 @@ return (
                   <Switch
                     onClick={handleToggle}
                     className={`rounded-full  ${
-                      isVeg ? "bg-primary-500" : "bg-red-500"
+                      isVeg ? "bg-primary-500" : "bg-red-600"
                     }`}
                     label="isVeg ? 'Veg' : 'Non Veg'"
                   ></Switch>
@@ -316,9 +317,10 @@ return (
                   <Button
                     size="large"
                     onClick={generateRecipe}
+                    className=" hover:text-primary-700 w-full"
                     sx={{
                       backgroundColor: "#4d730f",
-                      color: "black",
+                      color: "white",
                       width: 1,
                       height: 1,
                     }}
