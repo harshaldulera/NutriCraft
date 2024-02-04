@@ -43,7 +43,7 @@ export default function Parameters(props) {
   const generateRecipe = async () => {
     props.setOpen(true)
     try {
-       const response = await fetch('http://localhost:3000/generate-recipe', {
+       const response = await fetch('https://nutricraft.vercel.app/generate-recipe', {
          method: 'POST',
          headers: {
            'Content-Type': 'application/json',
