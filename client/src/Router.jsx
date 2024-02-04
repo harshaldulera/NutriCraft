@@ -13,6 +13,7 @@ import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
 import Stats from "./pages/Stats";
 import Profile from "./pages/Profile";
+import Tracker from "./pages/Tracker";
 
 export const Router = () => {
     return (
@@ -35,7 +36,7 @@ export const Router = () => {
                 <Route path="/ingredients" element={<Ingredients />} />  
                 <Route path='/meal' element={<Meal/>}/>
                 <Route path="/drawer" element={<DrawerComponent/>}/>
-                
+                <Route path="/tracker" element={<Tracker />} /> 
             </Routes>
         </>
     );
