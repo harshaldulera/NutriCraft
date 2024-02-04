@@ -176,8 +176,11 @@ export default function Upload(props) {
       </div> */}
       
       <h1 class="text-center pt-8 md:p-8 text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
-          Upload the image of your food
+          Don't know what to eat?
       </h1>
+      <h2 className="text-center text-xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-4xl">
+        Ask Us!
+      </h2>
       <div className="text-center flex flex-col items-center h-screen  w-screen p">
       <form
         className={`${
