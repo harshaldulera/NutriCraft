@@ -181,14 +181,12 @@ export default function NewUpload(props) {
       <div className="flex flex-col items-center justify-space h-screen/2 ">
       
       </div>
-      {/* <div className="words text-lg">
-        <h1>
-          HAVE INGREDIENTS AND DON'T KNOW WHAT TO EAT?
-        </h1>
-        <h1>
-          TRY US!!
-        </h1>
-      </div> */}
+      <h1 class="text-center pt-8 md:p-8 text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
+          How Healthy is your food?
+      </h1>
+      <h2 className="text-center text-xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-4xl">
+        Check it out!
+      </h2>
       <div className="text-center mt-5 flex flex-col items-center h-screen  w-screen p">
       <form 
         className={`${
