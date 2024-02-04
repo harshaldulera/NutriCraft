@@ -6,7 +6,8 @@ import Signup from "./pages/Auth/Signup";
 import Parameters  from "./components/Parameters";
 import CopyUpload from "./components/CopyUpload";
 import Recipe from "./components/Recipe";
-import Meal from "./pages/Meal";import Heatmap from "./components/Heatmap";
+import Meal from "./pages/Meal";
+import Heatmap from "./components/Heatmap";
 import Ingredients from "./pages/Ingredients";
 import DrawerComponent from "./components/TemporaryDrawer";
 import Dashboard from "./pages/Dashboard";
@@ -14,6 +15,7 @@ import Navbar from "./components/Navbar";
 import Stats from "./pages/Stats";
 import Profile from "./pages/Profile";
 import Tracker from "./pages/Tracker";
+import Endproduct from "./pages/Endproduct";
 
 export const Router = () => {
     return (
@@ -37,6 +39,7 @@ export const Router = () => {
                 <Route path='/meal' element={<Meal/>}/>
                 <Route path="/drawer" element={<DrawerComponent/>}/>
                 <Route path="/tracker" element={<Tracker />} /> 
+                <Route path="/endproduct" element={<Endproduct />} />
             </Routes>
         </>
     );
