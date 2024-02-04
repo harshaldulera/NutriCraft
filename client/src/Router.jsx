@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import CopyUpload from "./components/CopyUpload";
 import Navbar from "./components/Navbar";
 import Parameters from "./components/Parameters";
@@ -20,11 +20,16 @@ import Tracker from "./pages/Tracker";
 import Endproduct from "./pages/Endproduct";
 
 export const Router = () => {
+    const location = useLocation();
+    const showNavbar = location.pathname !== '/login';
+
     return (
         <>
-            <div>
-                <Navbar/>
-            </div>
+            {showNavbar && (
+                <div>
+                    <Navbar/>
+                </div>
+            )}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
