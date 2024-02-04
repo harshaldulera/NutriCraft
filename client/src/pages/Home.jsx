@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import Box from "../components/Box";
 import girlicon from "../assets/girlicon.png";
 import girlfood from "../assets/girl_food.jpeg";
 import boy_exercise from "../assets/boy_exercise.avif";
 import Navbar from "../components/Navbar";
+import { useNavigate } from 'react-router-dom';
+import { UserAuth } from "../contexts/AuthContext";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const { user } = UserAuth();
+
+  useEffect(() => {
+    if(!user) {
+      navigate('/login');
+    }
+  }, [history, user]);
+
   return (
     <>
       <div>

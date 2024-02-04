@@ -16,7 +16,7 @@ export default function Signup() {
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
             Create a Free Account
           </h2>
-          <form className="mt-8 space-y-6" action="#">
+          <form className="mt-8 space-y-6 flex flex-col" action="#">
             <div>
               <label
                 htmlFor="name"
