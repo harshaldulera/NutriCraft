@@ -165,7 +165,7 @@ export default function Upload(props) {
       //   setIngredients(ings)
       //  }
        // Move to next screen bro
-      //  alert(`Ingredients: ${ings}`);
+      alert(`Ingredients: ${ings}`);
       props.setIng(ings)
       props.setOpen(false)
       props.handleNext()

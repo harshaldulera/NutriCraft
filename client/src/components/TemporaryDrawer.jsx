@@ -43,7 +43,7 @@ function SwipeableEdgeDrawer(props) {
     let resultString = rec
     if (rec.startsWith(' ```json') && rec.endsWith('```')) {
         resultString = rec.substring(' ```json'.length, rec.length - '```'.length);}
-    if (rec.startsWith('```json') && rec.endsWith('```')) {
+    else if (rec.startsWith('```json') && rec.endsWith('```')) {
         resultString = rec.substring('```json'.length, rec.length - '```'.length);}
     let recipe = JSON.parse(resultString)
 
