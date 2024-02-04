@@ -201,10 +201,10 @@ return (
           Your Recipe generator
         </div>
       </section>
-      <div className="pb-24">
+      <div className="pb-24 flex-col items-center  contents-center">
         <div className="mx-auto space-y-6 md:space-x-6 md:space-y-0 max-w-2xl">
           <div>
-            <form className="w-full p--3 ">
+            <form className="w-full justify-center ">
               <div class="space-y-4">
                 <h1 className="text-xl font-bold mb-5">
                   How much time do you have?
@@ -229,7 +229,7 @@ return (
                     <Typography variant="body1"> {value}mins</Typography>
                   </div>
                 </div>
-                <div className="number-of-ppl">
+                <div className="number-of-ppl" style={{textDecoration:'none !important'}}>
                   <h1 className="text-xl font-bold mb-5">
                     How many people do you have to serve?
                   </h1>
