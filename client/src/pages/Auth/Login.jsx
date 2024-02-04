@@ -15,7 +15,7 @@ const Login = () => {
 
   return (
     <section className="bg-secondary-100 dark:bg-gray-900">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <div className="flex flex-col items-center justify-center px-6 pt-20 py-8 mx-auto md:h-screen lg:py-0">
         
         <h1 className="flex items-center mb-6 text-6xl font-semibold text-secondary-50 dark:text-white">
           NutriCraft
