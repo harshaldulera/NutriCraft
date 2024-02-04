@@ -42,15 +42,29 @@ export default function CopyUpload() {
 
   const handleCaptureClick = async () => {
     try {
-      setIsCapturing(true);
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-      }
+       setIsCapturing(true);
+       let constraints = { video: true };
+   
+       // Check if there are multiple video input devices
+       const devices = await navigator.mediaDevices.enumerateDevices();
+       const videoInputDevices = devices.filter(device => device.kind === 'videoinput');
+   
+       if (videoInputDevices.length > 1) {
+         // If there are multiple video input devices, prefer the rear camera
+         constraints.video = { facingMode: 'environment' };
+       } else {
+         // If there's only one video input device, assume it's a laptop and use the front camera
+         constraints.video = { facingMode: 'user' };
+       }
+   
+       const stream = await navigator.mediaDevices.getUserMedia(constraints);
+       if (videoRef.current) {
+         videoRef.current.srcObject = stream;
+       }
     } catch (error) {
-      console.error('Error accessing camera:', error);
+       console.error('Error accessing camera:', error);
     }
-  };
+   };
 
   const handleCaptureImage = () => {
     if (videoRef.current && canvasRef.current) {
@@ -84,7 +98,7 @@ export default function CopyUpload() {
     const base64Image = image.toString("base64");
     //console.log(base64Image)
     try {
-       const response = await fetch('http://localhost:3000/generate-ingredients', {
+       const response = await fetch('https://nutricraft.vercel.app/generate-ingredients', {
          method: 'POST',
          headers: {
            'Content-Type': 'application/json',

@@ -3,7 +3,7 @@ import ReactApexChart from 'react-apexcharts';
 
 const ApexChart = () => {
   const chartState = {
-    series: [44, 55, 13, 43, 22],
+    series: [85, 35, 70, 80, 82],
     options: {
       chart: {
         width: 380,
@@ -28,7 +28,7 @@ const ApexChart = () => {
 
   return (
     <div>
-      <div className="bg-white shadow rounded-lg p-4 mb-6"  style={{ height: 300 }}>
+      <div className="bg-white shadow rounded-lg p-4 mb-6 border-2 border-black"  style={{ height: 300 }}>
         <ReactApexChart options={chartState.options} series={chartState.series} type="pie" width={400} />
       </div>
       <div id="html-dist"></div>

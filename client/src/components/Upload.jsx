@@ -72,15 +72,29 @@ export default function Upload(props) {
   }
   const handleCaptureClick = async () => {
     try {
-      setIsCapturing(true);
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-      }
+       setIsCapturing(true);
+       let constraints = { video: true };
+   
+       // Check if there are multiple video input devices
+       const devices = await navigator.mediaDevices.enumerateDevices();
+       const videoInputDevices = devices.filter(device => device.kind === 'videoinput');
+   
+       if (videoInputDevices.length > 0) {
+         // If there are multiple video input devices, prefer the rear camera
+         constraints.video = { facingMode: 'environment' };
+       } else {
+         // If there's only one video input device, assume it's a laptop and use the front camera
+         constraints.video = { facingMode: 'user' };
+       }
+   
+       const stream = await navigator.mediaDevices.getUserMedia(constraints);
+       if (videoRef.current) {
+         videoRef.current.srcObject = stream;
+       }
     } catch (error) {
-      console.error('Error accessing camera:', error);
+       console.error('Error accessing camera:', error);
     }
-  };
+   };
 
 
   const handleCaptureImage = () => {
@@ -128,7 +142,7 @@ export default function Upload(props) {
     const base64Image = image.toString("base64");
     //console.log(base64Image)
     try {
-       const response = await fetch('http://localhost:3000/generate-ingredients', {
+       const response = await fetch('https://nutricraft.vercel.app/generate-ingredients', {
          method: 'POST',
          headers: {
            'Content-Type': 'application/json',
@@ -151,7 +165,7 @@ export default function Upload(props) {
       //   setIngredients(ings)
       //  }
        // Move to next screen bro
-      //  alert(`Ingredients: ${ings}`);
+      alert(`Ingredients: ${ings}`);
       props.setIng(ings)
       props.setOpen(false)
       props.handleNext()
@@ -176,8 +190,11 @@ export default function Upload(props) {
       </div> */}
       
       <h1 class="text-center pt-8 md:p-8 text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
-          Upload the image of your food
+          Don't know what to eat?
       </h1>
+      <h2 className="text-center text-xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-4xl">
+        Ask Us!
+      </h2>
       <div className="text-center flex flex-col items-center h-screen  w-screen p">
       <form
         className={`${

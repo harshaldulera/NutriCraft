@@ -20,7 +20,7 @@ const geminiModel = googleAI.getGenerativeModel({
 });
 
 const generationConfig = {
-  temperature: 0.5,
+  temperature: 0,
 };
 
 const model = googleAI.getGenerativeModel({ model: "gemini-pro",  generationConfig });
@@ -168,7 +168,7 @@ async function generateRecipe(dietRestrictions, ingredients, cooking_time, peopl
    
       const promptConfig = [
         { text: `Recognise the food item/s in this image. 
-          Give in json format the name the number of calories, protein, carbs, sugars, fats, sodium per 100 grams. 
+          Give in json format the name the number of calories, protein, carbs, sugars, fats, sodium per 100 grams. Just give a numerical value with no unit. 
           Respond in a valid json string with no extra information or formatting
 
           JSON format:
@@ -181,8 +181,8 @@ async function generateRecipe(dietRestrictions, ingredients, cooking_time, peopl
             "fats": "info",
             "sodium": "info",
           }
-          
-          ` },
+          Respond only with the completed JSON object, without any additional explanatory or descriptive text. The JSON should be complete and ready for parsing`
+          },
         {
           inlineData: {
             mimeType: "image/jpeg",

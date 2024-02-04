@@ -10,8 +10,7 @@ import * as React from 'react';
 import { getFirestore, increment, doc, updateDoc, collection, getDoc, setDoc } from 'firebase/firestore';
 import { UserAuth } from '../contexts/AuthContext'
 import { Button } from '@mui/material';
-import { db } from '../config/firebase';
-
+import { db } from '../config/firebase';import '../css/drawer.css';
 const drawerBleeding = 56;
 
 const Root = styled('div')(({ theme }) => ({
@@ -82,7 +81,7 @@ function SwipeableEdgeDrawer(props) {
     let resultString = rec
     if (rec.startsWith(' ```json') && rec.endsWith('```')) {
         resultString = rec.substring(' ```json'.length, rec.length - '```'.length);}
-    if (rec.startsWith('```json') && rec.endsWith('```')) {
+    else if (rec.startsWith('```json') && rec.endsWith('```')) {
         resultString = rec.substring('```json'.length, rec.length - '```'.length);}
     let recipe = JSON.parse(resultString)
 
@@ -101,9 +100,9 @@ function SwipeableEdgeDrawer(props) {
         }}
       />
       
-      <div className='flex flex-col align-center justify-center'>
+      <div className='flex flex-col align-center justify-center' className='image-show'>
         {/* //add image here */}
-        <img src={props.image} style={{"height":"150px", "margin": "auto", "marginTop":"2em"}}/>
+        <img src={props.image} style={{"height":"350px", "margin": "auto", "marginTop":"2em"}}/>
         <Button onClick={()=>updateTotalCalories(user.uid, parseFloat(recipe.calories), parseFloat(recipe.protein), parseFloat(recipe.sugar), parseFloat(recipe.carbs), parseFloat(recipe.fat), parseFloat(recipe.sodium))}>Eat</Button>
         
       </div>

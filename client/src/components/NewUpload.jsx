@@ -72,16 +72,29 @@ export default function NewUpload(props) {
   }
   const handleCaptureClick = async () => {
     try {
-      setIsCapturing(true);
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-      }
+       setIsCapturing(true);
+       let constraints = { video: true };
+   
+       // Check if there are multiple video input devices
+       const devices = await navigator.mediaDevices.enumerateDevices();
+       const videoInputDevices = devices.filter(device => device.kind === 'videoinput');
+      //alert(videoInputDevices.length)
+       if (videoInputDevices.length > 0) {
+         // If there are multiple video input devices, prefer the rear camera
+         constraints.video = { facingMode: 'environment' };
+       } else {
+         // If there's only one video input device, assume it's a laptop and use the front camera
+         constraints.video = { facingMode: 'user' };
+       }
+   
+       const stream = await navigator.mediaDevices.getUserMedia(constraints);
+       if (videoRef.current) {
+         videoRef.current.srcObject = stream;
+       }
     } catch (error) {
-      console.error('Error accessing camera:', error);
+       console.error('Error accessing camera:', error);
     }
-  };
-
+   };
 
   const handleCaptureImage = () => {
     if (videoRef.current && canvasRef.current) {
@@ -128,7 +141,7 @@ export default function NewUpload(props) {
     const base64Image = props.image.toString("base64");
     //console.log(base64Image)
     try {
-       const response = await fetch('http://localhost:3000/generate-info', {
+       const response = await fetch('https://nutricraft.vercel.app/generate-info', {
          method: 'POST',
          headers: {
            'Content-Type': 'application/json',
@@ -168,19 +181,17 @@ export default function NewUpload(props) {
       <div className="flex flex-col items-center justify-space h-screen/2 ">
       
       </div>
-      {/* <div className="words text-lg">
-        <h1>
-          HAVE INGREDIENTS AND DON'T KNOW WHAT TO EAT?
-        </h1>
-        <h1>
-          TRY US!!
-        </h1>
-      </div> */}
+      <h1 class="text-center pt-8 md:p-8 text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
+          How Healthy is your food?
+      </h1>
+      <h2 className="text-center text-xl font-bold leading-tight tracking-tighter md:text-4xl lg:text-4xl">
+        Check it out!
+      </h2>
       <div className="text-center mt-5 flex flex-col items-center h-screen  w-screen p">
-      <form
+      <form 
         className={`${
-          dragActive ? "bg-blue-400" : "bg-blue-100"
-        } bg-primary-100 p-7 h-100 w-3/5 rounded-lg uploadImg  text-center flex flex-col items-center justify-center`}
+          dragActive ? "bg-blue-400" : "bg-blue-100" 
+        } bg-primary-100 p-7 h-100 w-3/5 rounded-lg uploadImg form-upload text-center flex flex-col items-center justify-center`}
         onDragEnter={handleDragEnter}
         onSubmit={(e) => e.preventDefault()}
         onDrop={handleDrop}

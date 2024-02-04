@@ -6,12 +6,9 @@ const Barchart = () => {
     series: [
       {
         name: 'Calorie Intake',
-        data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
+        data: [2000, 1991, 2312, 1808, 1830, 1900,  2032,2123 ],
       },
-      {
-        name: 'Calorie burnt',
-        data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
-      },
+     
      
     ],
     options: {
@@ -35,7 +32,7 @@ const Barchart = () => {
         colors: ['transparent'],
       },
       xaxis: {
-        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        categories: ['28-Jan', '29-Jan', '30-Jan', '31-Jan', '1-Feb', '2-Feb', '3-Feb', '4-Feb'],
       },
       yaxis: {
         title: {

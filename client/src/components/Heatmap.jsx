@@ -4,8 +4,8 @@ import '../css/stats.css';
 
 const Heatmap = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-  const blocksPerLine = 5;
-  const lines = 6;
+  const blocksPerLine = 4;
+  const lines = 7;
   const calorieTarget = 2000;
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Heatmap = () => {
   }, [currentMonth]);
 
   const series = Array.from({ length: lines }, (_, i) => ({
-    name: `Line ${i + 1}`,
+    name: `Day ${i + 1}`,
     data: generateData(blocksPerLine, { min: 1500, max: 2500 }, calorieTarget, currentMonth),
   }));
 
@@ -31,13 +31,13 @@ const Heatmap = () => {
     dataLabels: {
       enabled: false,
     },
-    colors: ["#00E396"],
+    colors: ["#00E396","#FF0000 ",],
     title: {
       text: "Calorie Intake Tracker",
     },
     xaxis: {
       type: "category",
-      categories: Array.from({ length: blocksPerLine }, (_, i) => `Block ${i + 1}`),
+      categories: Array.from({ length: blocksPerLine }, (_, i) => `Week ${i + 1}`),
     },
     plotOptions: {
       heatmap: {
@@ -46,7 +46,7 @@ const Heatmap = () => {
             {
               from: -1,
               to: 0,
-              color: "#FF4560",
+              color: "#FF0000 ",
               name: "target not met",
             },
             {
@@ -79,7 +79,7 @@ const Heatmap = () => {
   }
   
   return (
-    <div className="bg-white shadow rounded-lg p-4 mb-6">
+    <div className="bg-white shadow border-black	rounded-lg p-4 mb-6 border-2 border-black">
       <ReactApexCharts
         options={options}
         series={series}
